@@ -10,28 +10,135 @@
 ## Consultas 📝
 
 1. Devuelve toda la información de la tabla `laureates`.
+✨Respuesta✨
+SELECT *
+FROM laureates 
+
 2. Devuelve toda la información de la tabla `nobels`.
+✨Respuesta✨
+SELECT *
+FROM nobels
 
 ### Nobels
 
 3. Devuelve toda la información relativa al Nobel de Química.
+✨Respuesta✨
+SELECT *
+FROM nobels
+WHERE category = 'Chemistry'
+
+
 4. Devuelve el nombre completo del Nobel de Ciencias Económicas.
+✨Respuesta✨
+SELECT category_fullname
+FROM nobels
+WHERE category = 'Economic Sciences'
+LIMIT 1
+
+
 5. Devuelve la motivación y la categoría del Nobel de la Paz.
+✨Respuesta✨
+SELECT motivation, category
+FROM nobels
+WHERE category = 'Peace'
+
+
 6. Devuelve el nombre completo y el `award_year` de los Nobel dados en el año 2019.
+✨Respuesta✨
+SELECT category_fullname, award_year
+FROM nobels
+WHERE EXTRACT(YEAR FROM date_awarded) = 2019
+
+
 7. Devuelve el la categoría y el `award_year` de los Nobel dados entre las fechas:
 
 - 11 de octubre de 2019
 - 12 de octubre de 2007
 
+✨Respuesta✨
+SELECT category, award_year
+FROM nobels
+WHERE date_awarded BETWEEN '2007-10-12' AND '2019-10-11'
+
+
+
 8. Devuelve el nombre completo, país y `award_year` de los Nobel de Química ordenados desde el más antiguo al más reciente
+
+✨Respuesta✨
+SELECT category_fullname, award_year
+FROM nobels
+WHERE category = 'Chemistry'
+ORDER BY date_awarded
+
+
 9. Devuelve la categoría, la motivación y el premio de los Nobel cuyo premio sea mayor de 500000$.
+
+✨Respuesta✨
+SELECT category, motivation, prize_amount
+FROM nobels
+WHERE prize_amount > 500000
+
+
 10. Devuelve la categoría, y el `award_year` y el premio de los Nobel cuya categoría sea Física.
+
+✨Respuesta✨
+SELECT category, award_year
+FROM nobels
+WHERE category = 'Physics'
+
+
 11. Devuelve la categoría y el `award_year` de los Nobel cuyo premio esté comprendido entre 100000$ y 300000$.
+
+✨Respuesta✨
+SELECT category, award_year
+FROM nobels
+WHERE prize_amount BETWEEN 100000 AND 300000
+
+
+
 12. Devuelve la suma de los premios Nobel de las categorías de Paz y Literatura.
+
+✨Respuesta✨
+SELECT COUNT(*)
+FROM nobels
+WHERE category IN ('Peace', 'Literature')
+
 13. Devuelve las 5 afiliaciones y categorías de los Nobel cuyos premios sean los menores.
+
+✨Respuesta✨
+SELECT affiliations, category
+FROM nobels
+ORDER BY prize_amount
+LIMIT 5
+
+
+
 14. Devuelve los 7 `award_year` más recientes en los que se ha entregado algún Nobel. Los años NO deben repetirse. Tienes que devolver 7 diferentes.
+
+✨Respuesta✨
+SELECT DISTINCT award_year
+FROM nobels
+ORDER BY award_year DESC
+LIMIT 7
+
+
 15. Devuelve `award_year`, `category_fullname` y `date_awarded` de los Nobel cuyo campo `date_awarded` sea `NULL`.
+
+✨Respuesta✨
+SELECT award_year, category_fullname, date_awarded
+FROM nobels
+WHERE date_awarded IS NULL
+
+
+
 16. Devuelve la suma de los premios de los Nobel cuyo campo `date_awarded` sea `NULL`
+
+✨Respuesta✨
+SELECT COUNT(*)
+FROM nobels
+WHERE date_awarded IS NULL
+
+
 
 ### Laureates
 
