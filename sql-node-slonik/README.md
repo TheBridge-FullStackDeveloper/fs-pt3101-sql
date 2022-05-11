@@ -81,12 +81,12 @@ Escribe los SELECT correspondientes dentro de las funciones asociadas a cada que
 
 ### Joins ✨
 
-24. Devuelve `query_name`, `production_budget` y distribuidora de los que trabajen juntos y cuya distribuidora no sea null
-25. Devuelve `query_name` y el total de películas que cada director ha dirigido
-26. Devuelve `query_name`, título e `imdb_votes` de las 50 películas menos votadas según `imdb_votes`
-27. Devuelve `query_name` y distribuidora donde el director sea `Christopher Nolan`
-28. Devuelve el nombre y la recaudación en Estados Unidos del director que más ha recaudado en Estados Unidos
-29. Devuelve el nombre y fecha del director que más películas haya lanzado desde el año 2000 hasta la actualidad
+24. Devuelve `query_name`, `production_budget` y distribuidora de los que trabajen juntos y cuya distribuidora no sea null ❔
+25. Devuelve `query_name` y el total de películas que cada director ha dirigido ✅
+26. Devuelve `query_name`, título e `imdb_votes` de las 50 películas menos votadas según `imdb_votes` ✅
+27. Devuelve `query_name` y distribuidora donde el director sea `Christopher Nolan` ✅
+28. Devuelve el nombre y la recaudación en Estados Unidos del director que más ha recaudado en Estados Unidos ✅
+29. Devuelve el nombre y fecha del director que más películas haya lanzado desde el año 2000 hasta la actualidad ✅
 30. Devuelve el nombre, `major_genre` y `rotten_tomatoes_rating` de todos los directores que hayan hecho películas de drama y cuya puntuación en `rotten_tomatoes_rating` sea mayor de 70
 31. Devuelve el nombre de los directores australianos que hayan dirigido alguna película antes de 1995
 32. Devuelve el nombre de los directores, título, fecha y `mpaa_rating` de las películas cuyo `mpaa_rating` sea `PG-13`
