@@ -55,6 +55,7 @@ WHERE EXTRACT(YEAR FROM date_awarded) = 2019
 - 11 de octubre de 2019
 - 12 de octubre de 2007
 
+<<<<<<< HEAD
 ✨Respuesta:
 SELECT category, award_year
 FROM nobels
@@ -71,6 +72,9 @@ WHERE category = 'Chemistry'
 ORDER BY date_awarded
 
 
+=======
+8. Devuelve el nombre completo y `award_year` de los Nobel de Química ordenados desde el más antiguo al más reciente => No existe país en la tabla, de requerir país habría que hacer join (corregir)
+>>>>>>> 9c5a941f95d2e5ea610b54046117a612baf0f602
 9. Devuelve la categoría, la motivación y el premio de los Nobel cuyo premio sea mayor de 500000$.
 
 ✨Respuesta:
