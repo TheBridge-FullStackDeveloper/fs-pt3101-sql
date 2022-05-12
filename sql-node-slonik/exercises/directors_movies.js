@@ -80,36 +80,48 @@ module.exports = {
 
     async q30() {
         const result = await db.query(sql`
-        SELECT title, source
+        SELECT  query_name, major_genre, rotten_tomatoes_rating
         FROM movies
-        WHERE title LIKE 'F%'
+        JOIN directors
+            ON movies.director = directors.id
+        WHERE major_genre = 'Drama' AND
+        rotten_tomatoes_rating > 70
         `)
         return result.rows
     },
 
     async q31() {
         const result = await db.query(sql`
-        SELECT title, source
+        SELECT  query_name
         FROM movies
-        WHERE title LIKE 'F%'
+        JOIN directors
+            ON movies.director = directors.id
+        WHERE nationality LIKE '%australiana%' AND
+        release_date < '1995-01-01'
         `)
         return result.rows
     },
 
     async q32() {
         const result = await db.query(sql`
-        SELECT title, source
+        SELECT  query_name, title, release_date, mpaa_rating
         FROM movies
-        WHERE title LIKE 'F%'
+        JOIN directors
+            ON movies.director = directors.id
+        WHERE mpaa_rating = 'PG-13'
         `)
         return result.rows
     },
 
     async q33() {
         const result = await db.query(sql`
-        SELECT title, source
+        SELECT  query_name, nationality, imdb_rating
         FROM movies
-        WHERE title LIKE 'F%'
+        JOIN directors
+            ON movies.director = directors.id
+        WHERE nationality LIKE '%canadiense%' AND imdb_rating IS NOT NULL
+        ORDER BY imdb_rating DESC, directors.id
+        OFFSET 4 LIMIT 1
         `)
         return result.rows
     },

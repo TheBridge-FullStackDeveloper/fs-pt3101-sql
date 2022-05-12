@@ -67,11 +67,11 @@ Escribe los SELECT correspondientes dentro de las funciones asociadas a cada que
 10. Devuelve el título y el `mpaa_rating` de todas las películas cuya valoración `mpaa` no sea null ✅
 11. Devuelve el título, `production_budget` y distribuidora de todas aquellas películas cuyos costes  ✅(`production_budget`) hayan sido inferiores a `500000$` ✅
 12. Devuelve el título, `major_genre` y `production_budget` de las 10 películas más costosas ✅
-13. Devuelve el título y el orígen (`source`) de todas las películas cuyo `source` sea `remake` ✅ 💡 Aparece como 'Remake' en la base de datos
+13. Devuelve el título y el orígen (`source`) de todas las películas cuyo `source` sea `remake` ✅
 14. Devuelve el título, la distribuidora y el rating imdb de todas las películas cuyo `imdb_rating` no sea null ✅
 15. Devuelve el título y `rotten_tomatoes_rating` de las 100 películas menor valoradas según este campo. ✅
 16. Devuelve el título, `major_genre`, imdb_rating e imdb_votes de las 20 películas mejor valoradas y a la vez con más votos de todas ✅
-17. Devuelve la suma del campo `production_budget` cuyo `mpaa_rating` sea `Not Rated` y el campo título no sea null ✅ 💡 Creo que no hay titles NULL
+17. Devuelve la suma del campo `production_budget` cuyo `mpaa_rating` sea `Not Rated` y el campo título no sea null ✅
 18. Devuelve el título y la fecha de todas aquellas películas que serán lanzadas en el futuro ✅
 19. Devuelve el título, `us_gross` y fecha de todas aquellas películas lanzadas entre 1950 y 1980 ✅
 20. Devuelve el título, `us_gross` y `worldwide_gross` de todas aquellas películas donde `us_gross` o `worldwide_gross` sea 0 ✅
@@ -81,15 +81,15 @@ Escribe los SELECT correspondientes dentro de las funciones asociadas a cada que
 
 ### Joins ✨
 
-24. Devuelve `query_name`, `production_budget` y distribuidora de los que trabajen juntos y cuya distribuidora no sea null ❔
+24. Devuelve `query_name`, `production_budget` y distribuidora de los que trabajen juntos y cuya distribuidora no sea null ni ''
 25. Devuelve `query_name` y el total de películas que cada director ha dirigido ✅
 26. Devuelve `query_name`, título e `imdb_votes` de las 50 películas menos votadas según `imdb_votes` ✅
 27. Devuelve `query_name` y distribuidora donde el director sea `Christopher Nolan` ✅
 28. Devuelve el nombre y la recaudación en Estados Unidos del director que más ha recaudado en Estados Unidos ✅
-29. Devuelve el nombre y fecha del director que más películas haya lanzado desde el año 2000 hasta la actualidad ✅
-30. Devuelve el nombre, `major_genre` y `rotten_tomatoes_rating` de todos los directores que hayan hecho películas de drama y cuya puntuación en `rotten_tomatoes_rating` sea mayor de 70
-31. Devuelve el nombre de los directores australianos que hayan dirigido alguna película antes de 1995
-32. Devuelve el nombre de los directores, título, fecha y `mpaa_rating` de las películas cuyo `mpaa_rating` sea `PG-13`
-33. Devuelve el quinto mejor director canadiense que haya obtenido la mejor media de `imdb_rating`
+29. Devuelve el nombre y fecha del director que más películas haya lanzado desde el año 2000 hasta la actualidad
+30. Devuelve el nombre, `major_genre` y `rotten_tomatoes_rating` de todos los directores que hayan hecho películas de drama y cuya puntuación en `rotten_tomatoes_rating` sea mayor de 70 ✅
+31. Devuelve el nombre de los directores australianos que hayan dirigido alguna película antes de 1995 ✅
+32. Devuelve el nombre de los directores, título, fecha y `mpaa_rating` de las películas cuyo `mpaa_rating` sea `PG-13` ✅
+33. Devuelve el quinto mejor director canadiense que haya obtenido la mejor media de `imdb_rating` ✅
 34. Devuelve la media de las 20 mejores películas de ficción contemporánea entre 1990 y el 2000 según `rotten_tomatoes_rating` e `imdb_rating`
 35. Devuelve los nombre de los directores y las fechas solo en años de las películas basadas en juegos que hayan recaudado menos de `500000$`
