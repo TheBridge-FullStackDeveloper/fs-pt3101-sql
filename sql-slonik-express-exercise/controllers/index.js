@@ -1,8 +1,8 @@
 const router = require("express").Router();
 
 module.exports = (db) => {
-   router.use("/pokemon", require("./pokemon")(db));
-   router.use("/leaders", require("./leaders")(db));
+   router.use("/pokemons", require("./pokemons")(db));
+   router.use("/trainers", require("./trainers")(db));
 
    return router;
 };

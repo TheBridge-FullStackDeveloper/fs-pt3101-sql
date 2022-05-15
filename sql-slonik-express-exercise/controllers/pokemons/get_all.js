@@ -1,4 +1,4 @@
-const { selectAll } = require("../../queries/pokemon");
+const { selectAll } = require("../../queries/pokemons");
 const errors = require("../../errors");
 
 module.exports = (db) => async (req, res, next) => {

@@ -32,13 +32,13 @@ Apóyate en los ejercicios anteriormente creados en clase para ir siguiendo el e
       },
       ...
     ]
-  }
+  }✅✅✅✅✅✅✅
 ```
 
 2. Haz un endpoint para obtener `name`, `badge`, `description` y `city` (de `gyms`) de todos los entrenadores
 ```js
 // GET http://localhost:3000/trainers
-```
+```✅✅✅✅✅✅✅
 
 3. Haz un endpoint para obtener `name`, `badge` (trainers), lista de pokemons y nombre de ciudad de todos los entrenadores
 ```js
