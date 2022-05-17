@@ -88,6 +88,7 @@ El body será así
 }
 ```
 Recuerda que `city` pertenece a otra entidad
+✅✅✅✅✅✅✅✅
 
 10. Crea un endpoint para enlazar pokémons existentes a entrenadores
 ```js
@@ -101,7 +102,7 @@ Recuerda que `city` pertenece a otra entidad
     "Gyarados",
   ]
 }
-```
+```✅✅✅✅✅✅✅✅
 
 11. Crea un endpoint para crear un pokémon nuevo a mano
 ```js
@@ -113,7 +114,7 @@ Recuerda que `city` pertenece a otra entidad
   "level": "21",
   "id": 3
 }
-```
+```✅✅✅✅✅✅
 
 12. Modifica el controlador asociado al endpoint del punto 7 para que, si NO encuentra el pokémon, lo busque en la `PokeAPI` y, el resultado devuelto, lo inserte en tu base de datos. Tras guardar el resultado, devuelves la misma información que en el punto 7.
 Si la PokeApi devuelve `no encontrado`, devuelves lo mismo. Si da algún error diferente, devuelve error de servidor (500)

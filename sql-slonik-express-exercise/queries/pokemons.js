@@ -145,9 +145,38 @@ const selectByName = (db) => async (name) => {
     };
 };
 
+const postPokemon = (db) => async (id, name, level) => {
+    try {
+        const addPokemon = async () => {
+            await db.query(sql`
+            INSERT INTO pokemons (
+                id, name, level
+            ) VALUES (
+                ${id}, ${name}, ${level}
+            ) ON CONFLICT DO NOTHING;
+        `);
+        }
+        addPokemon()
+
+        return {
+            ok: true,
+            data: "pokemon added!"
+        };
+    } catch (error) {
+        console.info("error at addPokemons trainer");
+        console.error(error.message);
+
+        return {
+            ok: false,
+        };
+    };
+};
+
+
 
 module.exports = {
     selectAll,
     selectByType,
     selectByName,
+    postPokemon,
 };
