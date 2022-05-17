@@ -55,7 +55,7 @@ Apóyate en los ejercicios anteriormente creados en clase para ir siguiendo el e
 // GET http://localhost:3000/pokemons?type1=grass
 // GET http://localhost:3000/pokemons?type1=grass&type2=poison
 ```
-Devolviendo así todos los pokémon que contengan, entre sus tipos, los designados en los query params. Si solo se indica un tipo, tienes que traer todos los pokémon que al menos tengan el tipo designado. No tiene que ser de tipo único específicamente.
+Devolviendo así todos los pokémon que contengan, entre sus tipos, los designados en los query params. Si solo se indica un tipo, tienes que traer todos los pokémon que al menos tengan el tipo designado. No tiene que ser de tipo único específicamente.✅✅✅✅✅✅✅✅
 
 6. Crea un endpoint que devuelva todos los pokémon del tipo único especificado a través de route params
 ```js
@@ -66,13 +66,13 @@ Esto devuelve todos aquellos que sean únicamente de tipo `fire`✅✅✅✅✅�
 7. Crea un endpoint que devuelva la misma información del primer punto, pero para un único pokémon
 ```js
 // GET http://localhost:3000/pokemons/gyarados
-```
+```✅✅✅✅✅✅
 
 8. Crea un endpoint que devuelva un solo entrenador a partir del nombre como route param
 ```js
 // GET http://localhost:3000/trainers/misty
 ```
-Fíjate que hay un entrenador que tiene de nombre `Lt. Surge` y todos los nombres empiezan en mayúscula. Quizás debas crear otra columna, que tendrá el formato de los nombres para las búsquedas
+Fíjate que hay un entrenador que tiene de nombre `Lt. Surge` y todos los nombres empiezan en mayúscula. Quizás debas crear otra columna, que tendrá el formato de los nombres para las búsquedas✅✅✅✅✅✅✅✅
 
 9. Crea un endpoint para introducir un nuevo entrenador
 ```js
