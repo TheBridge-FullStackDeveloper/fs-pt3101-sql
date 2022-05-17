@@ -43,12 +43,12 @@ Apóyate en los ejercicios anteriormente creados en clase para ir siguiendo el e
 3. Haz un endpoint para obtener `name`, `badge` (trainers), lista de pokemons y nombre de ciudad de todos los entrenadores
 ```js
 // GET http://localhost:3000/cities
-```
+```✅✅✅✅✅✅✅
 
 4. Haz un endpoint pata obtener el nombre de todos los tipos guardados en base de datos
 ```js
 // GET http://localhost:3000/types
-```
+```✅✅✅✅✅✅✅
 
 5. Modifica el primer endpoint para que acepte query params de la siguiente manera
 ```js
@@ -61,7 +61,7 @@ Devolviendo así todos los pokémon que contengan, entre sus tipos, los designad
 ```js
 // GET http://localhost:3000/pokemons/type/fire
 ```
-Esto devuelve todos aquellos que sean únicamente de tipo `fire`
+Esto devuelve todos aquellos que sean únicamente de tipo `fire`✅✅✅✅✅✅
 
 7. Crea un endpoint que devuelva la misma información del primer punto, pero para un único pokémon
 ```js
