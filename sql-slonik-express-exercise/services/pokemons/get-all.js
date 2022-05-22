@@ -4,9 +4,7 @@ const errors = require('../../errors')
 module.exports = db => async (_, res, next) => {
     const queryResult = await selectAll(db)()
 
-    if(!queryResult.ok) {
-        return next(errors[400])
-    }
+    if(!queryResult.ok) return next(errors[400])
 
     const result = queryResult.data.reduce((all, { id, name, type }) => {
         return {

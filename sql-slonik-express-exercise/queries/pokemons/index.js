@@ -4,9 +4,9 @@ const {
 } = require('./queries')
 
 const selectAll = db => async () => {
-    return queryCatcher(db.query, 'pokemons, selectAll fn')(
-        selectAllInfoFromPokemonsAndElements
-    )
+    return queryCatcher(
+        db.query, 'pokemons, selectAll fn'
+    )(selectAllInfoFromPokemonsAndElements)
 }
 
 module.exports = {
