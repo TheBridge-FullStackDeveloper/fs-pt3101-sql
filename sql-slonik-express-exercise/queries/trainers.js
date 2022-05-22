@@ -30,13 +30,14 @@ const selectAll = (db) => async () => {
 const selectByCity = (db) => async (city) => {
     try {
         const rawLeaders = await db.query(sql`
-        SELECT leaders.name, leaders.badge, pokemons.name AS pokemon, gyms.city
-        FROM leaders
-        JOIN gyms
-            ON leaders.id = gyms.leader_id
-        JOIN pokemons 
-            ON leaders.id = pokemons.leader_id
-        WHERE gyms.city = ${city}
+        SELECT leaders.name AS leader, badge, city, array_agg(pokemons.name) AS pokemons
+        FROM leaders 
+        INNER JOIN gyms 
+        ON gyms.leader_id = leaders.id
+        INNER JOIN pokemons 
+        ON pokemons.leader_id = leaders.id
+        WHERE gyms.query_name = ${city}
+        GROUP BY leaders.name, badge, city
         `);
 
         const leaders = rawLeaders.rows;

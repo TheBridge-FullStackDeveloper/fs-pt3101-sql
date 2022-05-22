@@ -1,14 +1,14 @@
-const { postPokemon } = require("../../queries/pokemons");
+const { postType } = require("../../queries/types");
 const errors = require("../../errors");
 
 module.exports = (db) => async (req, res, next) => {
-    const { id, name, level = 50 } = req.body;
+    const { names } = req.body;
     
-    if (!id || !name) {
+    if (!names) {
         return next(errors[400]);
     };
 
-    const result = await postPokemon(db)(id, name, level);
+    const result = await postType(db)(names);
 
     if (!result.ok) {
         return next(errors[400]);
@@ -16,6 +16,6 @@ module.exports = (db) => async (req, res, next) => {
 
     res.status(200).json({
         success: true,
-        data: result.data,
+        message: `Types added`
     });
 };

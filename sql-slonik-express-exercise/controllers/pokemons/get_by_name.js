@@ -11,7 +11,7 @@ module.exports = (db) => async (req, res, next) => {
     const result = await selectByName(db)(name);
 
     if (!result.ok) {
-        return next(errors[400]);
+        return next(errors[404]);
     }
 
     res.status(200).json({
