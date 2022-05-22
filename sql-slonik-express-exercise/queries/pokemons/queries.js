@@ -1,12 +1,22 @@
 const { sql } = require('slonik')
 
-const selectAllInfoFromPokemonsAndElements = sql`
+const whereTypes = (type1, type2) => {
+    if(type1 && type2) return sql`
+        WHERE e.name = ${type1}
+        OR e.name = ${type2}   
+    `
+
+    return type1 ? sql`WHERE e.name = ${type1}` : ''
+}
+
+const selectAllInfoFromPokemonsAndElements = (type1, type2) => sql`
     SELECT p.id, p.name, e.name AS type
     FROM pokemons AS p
     INNER JOIN pokemons_elements AS pe
     ON p.id = pe.pokemon_id
     INNER JOIN elements AS e
-    ON e.id = pe.element_id;
+    ON e.id = pe.element_id
+    ${whereTypes(type1, type2)}
 `
 
 const selectAllTypes = sql`

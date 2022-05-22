@@ -1,8 +1,10 @@
 const { selectAll } = require('../../queries/pokemons')
 const errors = require('../../errors')
 
-module.exports = db => async (_, res, next) => {
-    const queryResult = await selectAll(db)()
+module.exports = db => async (req, res, next) => {
+    const { type1, type2 } = req.query
+
+    const queryResult = await selectAll(db)(type1, type2)
 
     if(!queryResult.ok) return next(errors[400])
 

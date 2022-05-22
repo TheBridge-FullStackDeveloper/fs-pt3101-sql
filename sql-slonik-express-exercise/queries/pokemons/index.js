@@ -4,10 +4,10 @@ const {
     selectAllTypes,
 } = require('./queries')
 
-const selectAll = db => async () => {
+const selectAll = db => async (type1, type2) => {
     return queryCatcher(
         db.query, 'pokemons, selectAll fn'
-    )(selectAllInfoFromPokemonsAndElements)
+    )(selectAllInfoFromPokemonsAndElements(type1, type2))
 }
 
 const selectTypes = db => async () => {
