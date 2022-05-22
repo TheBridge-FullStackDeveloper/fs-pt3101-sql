@@ -1,0 +1,7 @@
+instalar slonik - npm i slonik
+configurar la bd
+cinfigurar el comando de creacion del package.json
+Carpeta scripts / crer los scripts
+script de creacion de tanlas
+script de CRUD
+Crear carpeta seeds
