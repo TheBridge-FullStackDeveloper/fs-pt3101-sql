@@ -108,6 +108,48 @@ INSERT INTO elements (
   'normal'::types
 );
 
+INSERT INTO elements (
+  name
+) VALUES (
+  'dragon'::types
+);
+
+INSERT INTO elements (
+  name
+) VALUES (
+  'fairy'::types
+);
+
+INSERT INTO elements (
+  name
+) VALUES (
+  'dark'::types
+);
+
+INSERT INTO elements (
+  name
+) VALUES (
+  'flying'::types
+);
+
+INSERT INTO elements (
+  name
+) VALUES (
+  'ice'::types
+);
+
+INSERT INTO elements (
+  name
+) VALUES (
+  'ghost'::types
+);
+
+INSERT INTO elements (
+  name
+) VALUES (
+  'steel'::types
+);
+
 -- Inserción de filas para "POKÉMONS"
 INSERT INTO pokemons (
   id, name, level, leader_id

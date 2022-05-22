@@ -102,15 +102,15 @@ const selectByType = (db) => async (type) => {
         };
     };
 };
-const postPokemon = (db) => async (id, name, level, types) => {
+const postPokemon = (db) => async (list_id, name, level, types) => {
     try {
         const nameDB = firstLetterToUpper(name)
         const addPokemon = async () => {
             await db.query(sql`
             INSERT INTO pokemons (
-                id, name, level
+                list_id, name, level
             ) VALUES (
-                ${id}, ${nameDB}, ${level} 
+                ${list_id}, ${nameDB}, ${level} 
             ) ON CONFLICT DO NOTHING;
         `);
         }
@@ -119,14 +119,14 @@ const postPokemon = (db) => async (id, name, level, types) => {
         
         
         if(types) {
-            console.log("entra en if types")
-            for await (const slot of types) {
+            for await (const type of types) {
                 try {
                     await db.query(sql`
                     INSERT INTO pokemons_elements (
                         pokemon_id, element_id
                     ) VALUES (
-                        ${id}, (SELECT id FROM elements WHERE name = ${slot.type.name})
+                        (SELECT id FROM pokemons WHERE name = ${nameDB}),
+                        (SELECT id FROM elements WHERE name = ${type})
                     ) ON CONFLICT DO NOTHING;
                     `)
                 } catch (error) {
@@ -186,15 +186,16 @@ const selectByName = (db) => async (name) => {
         if(!pokemonArr.length) {
             const URL = `${BASE_URL}${SUB_URL}/${name}`
             const result = await axios.get(URL)
-            const { id, types } = result.data
+            const { id: list_id, types } = result.data
             const pokemon = {
-                id: id,
+                list_id: list_id,
                 name: name,
                 types: []
             };
-            pokemon.types = types.map(slot => slot.type.name)
-            pokemonArr.push(pokemon)
-            postPokemon(db)(id, name, 50, types)
+            pokemon.types = types.map(slot => slot.type.name);
+            const typesArr = pokemon.types
+            pokemonArr.push(pokemon);
+            postPokemon(db)(list_id, name, 50, typesArr);
         }
         
         return {

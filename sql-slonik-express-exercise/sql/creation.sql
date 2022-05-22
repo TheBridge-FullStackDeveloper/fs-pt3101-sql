@@ -13,7 +13,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TYPE types AS ENUM (
   'rock', 'ground', 'water', 'psychic', 'electric',
-  'grass', 'poison', 'bug', 'fire', 'normal'
+  'grass', 'poison', 'bug', 'fire', 'normal', 'dragon', 'fairy', 'dark', 'flying', 'ice', 'ghost', 'steel'
 );
 
 -- Creación de todas las tablas del esquema
