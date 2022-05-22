@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS gyms (
 );
 
 CREATE TABLE IF NOT EXISTS pokemons_elements (
-  pokemon_id smallint REFERENCES pokemons (id)
+  pokemon_id uuid REFERENCES pokemons (id)
     ON UPDATE CASCADE
     ON DELETE CASCADE,
   element_id uuid REFERENCES elements (id)
