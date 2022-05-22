@@ -9,6 +9,11 @@ const selectAllInfoFromPokemonsAndElements = sql`
     ON e.id = pe.element_id;
 `
 
+const selectAllTypes = sql`
+    SELECT name FROM elements;
+`
+
 module.exports = {
     selectAllInfoFromPokemonsAndElements,
+    selectAllTypes,
 }
