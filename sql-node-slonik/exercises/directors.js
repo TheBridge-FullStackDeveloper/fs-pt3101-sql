@@ -4,34 +4,77 @@ const { sql } = require('slonik')
 module.exports = {
     // Your directors queries
     async q1() {
-        // README - Directors.1
+        const result = await db.query(sql`
+        SELECT name 
+        FROM directors
+        WHERE name != ''
+        `)
+        return result.rows
     },
 
     async q2() {
-        // README - Directors.2
+        const result = await db.query(sql`
+        SELECT query_name, nickname
+        FROM directors
+        `)
+        return result.rows
     },
 
     async q3() {
-        // README - Directors.3
+        const result = await db.query(sql`
+        SELECT nickname, pic
+        FROM directors
+        WHERE nickname != ''
+        `)
+        return result.rows
     },
 
     async q4() {
-        // README - Directors.4
+        const result = await db.query(sql`
+        SELECT query_name, nationality
+        FROM directors
+        WHERE nationality LIKE '%canadiense%'
+        `)
+        return result.rows
     },
 
+
+    /*SELECT query_name, nationality
+FROM directors
+WHERE nationality IN ('británica,estadounidense', 'estadounidense,británico')*/
     async q5() {
-        // README - Directors.5
+        const data = await db.query(sql`
+        SELECT query_name, nationality
+        FROM directors
+        WHERE nationality LIKE '%estadounidense%'
+        AND nationality LIKE '%brit%'
+        `)
     },
 
     async q6() {
-        // README - Directors.6
+        const result = await db.query(sql`
+        SELECT query_name, nationality, roles
+        FROM directors
+        WHERE roles LIKE '%ajedrecista%'
+        `)
+        return result.rows
     },
 
     async q7() {
-        // README - Directors.7
+        const result = await db.query(sql`
+        SELECT query_name, nationality, roles   
+        FROM directors
+        WHERE nationality LIKE '%,%'
+        `)
+        return result.rows
     },
 
     async q8() {
-        // README - Directors.8
+        const result = await db.query(sql`
+        SELECT query_name, roles
+        FROM directors
+        WHERE roles LIKE '%,%,%'
+        `)
+        return result.rows
     },
 }

@@ -13,7 +13,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TYPE types AS ENUM (
   'rock', 'ground', 'water', 'psychic', 'electric',
-  'grass', 'poison', 'bug', 'fire', 'normal'
+  'grass', 'poison', 'bug', 'fire', 'normal', 'dragon', 'fairy', 'dark', 'flying', 'ice', 'ghost', 'steel'
 );
 
 -- Creación de todas las tablas del esquema
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS gyms (
 );
 
 CREATE TABLE IF NOT EXISTS pokemons_elements (
-  pokemon_id smallint REFERENCES pokemons (id)
+  pokemon_id uuid REFERENCES pokemons (id)
     ON UPDATE CASCADE
     ON DELETE CASCADE,
   element_id uuid REFERENCES elements (id)
