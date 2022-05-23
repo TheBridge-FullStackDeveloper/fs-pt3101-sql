@@ -23,7 +23,19 @@ const selectAllTypes = sql`
     SELECT name FROM elements;
 `
 
+const selectAllWithJustOneType = sql`
+    SELECT p.id, p.name, p.level, array_agg(e.name) AS type
+    FROM pokemons AS p
+    INNER JOIN pokemons_elements AS pe
+    ON p.id = pe.pokemon_id
+    INNER JOIN elements AS e
+    ON e.id = pe.element_id
+    GROUP BY p.id, p.name
+    HAVING COUNT(p.name) = 1;
+`
+
 module.exports = {
     selectAllInfoFromPokemonsAndElements,
     selectAllTypes,
+    selectAllWithJustOneType,
 }
