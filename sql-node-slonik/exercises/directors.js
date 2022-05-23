@@ -47,9 +47,8 @@ WHERE nationality IN ('británica,estadounidense', 'estadounidense,británico')*
         SELECT query_name, nationality
         FROM directors
         WHERE nationality LIKE '%estadounidense%'
+        AND nationality LIKE '%brit%'
         `)
-        const estadounidenses = data.rows
-        estadounidenses.filter(director => director.nationality )
     },
 
     async q6() {

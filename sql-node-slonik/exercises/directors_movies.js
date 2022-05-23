@@ -72,7 +72,7 @@ module.exports = {
                 ON movies.director = directors.id
              WHERE release_date >= '2000-01-01'
             GROUP BY query_name
-            ORDER BY COUNT(*) DESC
+            ORDER BY COUNT(title) DESC
             LIMIT 1)
         `)
         return result.rows
@@ -128,18 +128,29 @@ module.exports = {
 
     async q34() {
         const result = await db.query(sql`
-        SELECT title, source
+        SELECT rotten_tomatoes_rating, imdb_rating
         FROM movies
-        WHERE title LIKE 'F%'
+        JOIN directors
+            ON movies.director = directors.id
+        WHERE creative_type = 'Contemporary Fiction'
+        AND rotten_tomatoes_rating IS NOT NULL
+        AND imdb_rating IS NOT NULL
+        AND release_date BETWEEN '1990-01-01' AND '2000-12-31'
+GROUP BY rotten_tomatoes_rating, imdb_rating
+        ORDER BY rotten_tomatoes_rating DESC, imdb_rating DESC
+        LIMIT 20
         `)
         return result.rows
     },
 
     async q35() {
         const result = await db.query(sql`
-        SELECT title, source
+        SELECT query_name, DATE_PART('year', release_date)
         FROM movies
-        WHERE title LIKE 'F%'
+        JOIN directors
+            ON movies.director = directors.id
+        WHERE source = 'Based on Play'
+        AND worldwide_gross >= 500000
         `)
         return result.rows
     },

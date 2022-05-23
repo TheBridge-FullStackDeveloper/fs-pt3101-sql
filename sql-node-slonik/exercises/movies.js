@@ -101,7 +101,8 @@ module.exports = {
         const result = await db.query(sql`
         SELECT title, us_gross, release_date
         FROM movies
-        WHERE release_date BETWEEN '1950-01-01' AND '1980-12-31'
+        WHERE release_date BETWEEN
+            '1950-01-01' AND '1980-12-31'
         `)
         return result.rows
     },
