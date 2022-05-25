@@ -8,8 +8,6 @@ module.exports = db => async (_, res, next) => {
 
     res.status(200).json({
         success: true,
-        data: {
-            types: queryResult.data.map(type => type.name),
-        },
+        data: queryResult.data.map(type => type.name),
     })
 }
