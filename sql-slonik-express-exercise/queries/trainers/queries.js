@@ -1,4 +1,5 @@
 const { sql } = require('slonik')
+const { normalizer } = require('../../utils/commons')
 
 const whereLeader = leader => {
     if(leader) return sql`
@@ -16,6 +17,24 @@ const selectAllFromLeadersAndGyms = leader => sql`
     ${whereLeader(leader)};
 `
 
+const insertLeader = (name, badge, description, city) => sql`
+    INSERT INTO leaders (
+        name, badge, description, slug
+    ) VALUES (
+        ${name}, ${badge}, ${description}, ${normalizer(name)}
+    );
+`
+
+const insertGym = (leaderId, city) => sql`
+    INSERT INTO city (
+        leader_id, city
+    ) VALUES (
+        ${leaderId}, ${city}
+    );
+`
+
 module.exports = {
     selectAllFromLeadersAndGyms,
+    insertLeader,
+    insertGym,
 }

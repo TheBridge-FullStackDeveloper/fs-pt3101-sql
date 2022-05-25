@@ -4,7 +4,7 @@ const concat = (str1, str2) => str1.concat(str2)
 const join = (arr, arg = '') => arr.join(arg)
 const split = (str, separator = ' ') => str.split(separator)
 const capitalize = ([first, ...rest]) => concat(upper(first), lower(join(rest)))
-const normalize = str => join(split(str).map(lower), '-').replace('.', '')
+const normalizer = str => join(split(str).map(lower), '-').replace('.', '')
 
 const queryCatcher = (fn, place) => async query => {
     try {
@@ -32,5 +32,5 @@ module.exports = {
     join,
     capitalize,
     split,
-    normalize,
+    normalizer,
 }

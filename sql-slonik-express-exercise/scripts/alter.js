@@ -1,6 +1,6 @@
 const { sql } = require('slonik')
 const db = require('../configs/db')
-const { normalize } = require('../utils/commons')
+const { normalizer } = require('../utils/commons')
 
 const alterLeaders = async () => {
     await db.query(sql`
@@ -18,7 +18,7 @@ const updateLeaders = async () => {
         for await(const leader of leaders) {
             await tx.query(sql`
                 UPDATE leaders
-                SET slug = ${normalize(leader.name)}
+                SET slug = ${normalizer(leader.name)}
                 WHERE id = ${leader.id}
             `)
         }
