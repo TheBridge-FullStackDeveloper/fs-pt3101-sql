@@ -1,11 +1,6 @@
 const errors = require('../../errors')
 const { selectOneByName } = require('../../queries/pokemons')
-
-const upper = str => str.toUpperCase()
-const lower = str => str.toLowerCase()
-const concat = (str1, str2) => str1.concat(str2)
-const join = arr => arr.join('')
-const capitalize = ([first, ...rest]) => concat(upper(first), lower(join(rest)))
+const { capitalize } = require('../../utils/commons')
 
 module.exports = db => async (req, res, next) => {
     const { pokemon } = req.params

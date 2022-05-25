@@ -1,10 +1,10 @@
 const { queryCatcher } = require('../../utils/commons')
-const { selectAllFromTrainersAndGyms } = require('./queries')
+const { selectAllFromLeadersAndGyms } = require('./queries')
 
-const selectAll = db => async () => {
+const selectAll = db => async (trainer) => {
     return queryCatcher(
-        db.query, 'trainers, selectAll fn'
-    )(selectAllFromTrainersAndGyms)
+        trainer ? db.maybeOne : db.query, 'leaders, selectAll fn'
+    )(selectAllFromLeadersAndGyms(trainer))
 }
 
 module.exports = {
