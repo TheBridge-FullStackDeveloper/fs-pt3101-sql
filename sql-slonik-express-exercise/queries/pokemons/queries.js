@@ -9,13 +9,13 @@ const whereTypes = (type1, type2) => {
     return type1 ? sql`WHERE e.name = ${type1}` : sql``
 }
 
-// const havingLength = arr => {
-//     if(arr.length) return sql`
-//         HAVING COUNT(e.name) = ${arr.length}
-//     `
+const selectIdFromAnyPokemon = pokemon => sql`
+    SELECT id FROM pokemons WHERE name = ${pokemon}
+`
 
-//     return sql``
-// }
+const selectIdFromAnyType = type => sql`
+    SELECT id FROM elements WHERE name = ${type}
+`
 
 const join = sql`
     INNER JOIN pokemons_elements AS pe
@@ -52,9 +52,28 @@ const selectDetailsByName = pokemon => sql`
     GROUP BY p.id, p.name
 `
 
+const insertNew = (id, name, level) => sql`
+    INSERT INTO pokemons (
+        id, name, level
+    ) VALUES (
+        ${id}, ${name}, ${level}
+    );
+`
+
+const insertTypeRelation = (pokemon, type) => sql`
+    INSERT INTO pokemons_elements (
+        pokemon_id, element_id
+    ) VALUES (
+        (${selectIdFromAnyPokemon(pokemon)}),
+        (${selectIdFromAnyType(type)})
+    );
+`
+
 module.exports = {
     selectAllInfoFromPokemonsAndElements,
     selectAllTypes,
     selectAllWithJustOneType,
     selectDetailsByName,
+    insertNew,
+    insertTypeRelation,
 }

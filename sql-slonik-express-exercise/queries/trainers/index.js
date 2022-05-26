@@ -8,7 +8,7 @@ const {
 } = require('./queries')
 
 const selectAll = db => async (trainer) => {
-    return queryCatcher(
+    return await queryCatcher(
         trainer ? db.maybeOne : db.query, 'leaders, selectAll fn'
     )(selectAllFromLeadersAndGyms(trainer))
 }
