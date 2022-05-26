@@ -8,9 +8,10 @@ module.exports = db => async (req, res, next) => {
 
     const queryResult = await insertNewLeader(db)(name, badge, description, city)
 
-    console.info('> query result: ', queryResult)
+    if(!queryResult.ok) return next(errors[400])
 
     res.status(200).json({
         succes: true,
+        data: queryResult.data,
     })
 }

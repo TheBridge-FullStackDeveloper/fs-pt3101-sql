@@ -3,6 +3,7 @@ const {
     selectAllFromLeadersAndGyms,
     insertLeader,
     insertGym,
+    selectOne,
 } = require('./queries')
 
 const selectAll = db => async (trainer) => {
@@ -12,12 +13,20 @@ const selectAll = db => async (trainer) => {
 }
 
 const insertNewLeader = db => async (name, badge, description, city) => {
-    await db.transaction(async tx => {
+    return await db.transaction(async tx => {
         await queryCatcher(
-            tx.query, 'leaders, insertNewLeader'
+            tx.query, 'leaders, insertNewLeader fn1'
         )(insertLeader(name, badge, description, city))
 
-        // Pensar el proceso para obtener el id del entrenador creado y poder crear después la ciudad
+        const { data: recentLeader } = await queryCatcher(
+            tx.maybeOne, 'leaders, insertNewLeader fn2'
+        )(selectOne('name', name))
+
+        await queryCatcher(
+            tx.query, 'leaders, insertNewLeader fn3'
+        )(insertGym(recentLeader.id, city))
+
+        return await selectAll(tx)(recentLeader.slug)
     })
 }
 
