@@ -38,9 +38,18 @@ const insertGym = (leaderId, city) => sql`
     );
 `
 
+const selectTeamByLeaderSlug = leader => sql`
+    SELECT l.name, array_agg(p.name) AS team FROM leaders AS l
+    INNER JOIN pokemons AS p
+    ON l.id = p.leader_id
+    WHERE l.slug = ${leader}
+    GROUP BY l.name;
+`
+
 module.exports = {
     selectAllFromLeadersAndGyms,
     insertLeader,
     insertGym,
     selectOne,
+    selectTeamByLeaderSlug,
 }

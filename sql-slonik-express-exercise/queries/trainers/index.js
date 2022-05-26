@@ -4,6 +4,7 @@ const {
     insertLeader,
     insertGym,
     selectOne,
+    selectTeamByLeaderSlug,
 } = require('./queries')
 
 const selectAll = db => async (trainer) => {
@@ -30,7 +31,14 @@ const insertNewLeader = db => async (name, badge, description, city) => {
     })
 }
 
+const selectTeam = db => async leader => {
+    return await queryCatcher(
+        db.maybeOne, 'leaders, selectTeam fn'
+    )(selectTeamByLeaderSlug(leader))
+}
+
 module.exports = {
     selectAll,
     insertNewLeader,
+    selectTeam,
 }
