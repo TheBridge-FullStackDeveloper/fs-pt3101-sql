@@ -60,13 +60,13 @@ const insertNew = (id, name, level) => sql`
     );
 `
 
-const insertTypeRelation = (pokemon, type) => sql`
+const insertTypeRelation = (pokemon, type) => console.info('> ', pokemon, type) || sql`
     INSERT INTO pokemons_elements (
         pokemon_id, element_id
     ) VALUES (
         (${selectIdFromAnyPokemon(pokemon)}),
         (${selectIdFromAnyType(type)})
-    );
+    ) ON CONFLICT DO NOTHING;
 `
 
 module.exports = {
