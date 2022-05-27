@@ -25,11 +25,11 @@ const join = sql`
 `
 
 const selectAllInfoFromPokemonsAndElements = (types) => sql`
-    SELECT p.id, p.name, array_agg(e.name)::text[] AS type
+    SELECT p.list_id, p.name, array_agg(e.name)::text[] AS type
     FROM pokemons AS p
     ${join}
     ${whereTypes(...types)}
-    GROUP BY p.id, p.name
+    GROUP BY p.list_id, p.name
 `
 
 const selectAllTypes = sql`
@@ -37,24 +37,24 @@ const selectAllTypes = sql`
 `
 
 const selectAllWithJustOneType = sql`
-    SELECT p.id, p.name, p.level, array_agg(e.name) AS type
+    SELECT p.list_id, p.name, p.level, array_agg(e.name) AS type
     FROM pokemons AS p
     ${join}
-    GROUP BY p.id, p.name
+    GROUP BY p.list_id, p.name, p.level
     HAVING COUNT(e.name) = 1;
 `
 
 const selectDetailsByName = pokemon => sql`
-    SELECT p.id, p.name, array_agg(e.name)::text[] AS type
+    SELECT p.list_id, p.name, array_agg(e.name)::text[] AS type
     FROM pokemons AS p
     ${join}
     WHERE p.name = ${pokemon}
-    GROUP BY p.id, p.name
+    GROUP BY p.list_id, p.name
 `
 
 const insertNew = (id, name, level) => sql`
     INSERT INTO pokemons (
-        id, name, level
+        list_id, name, level
     ) VALUES (
         ${id}, ${name}, ${level}
     );

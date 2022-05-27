@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "db:alter": "node scripts/alter.js"
+    "db:alter:leaders": "node scripts/alter-leaders.js",
+    "db:alter:pokemons": "node scripts/alter-pokemons.js",
+    "db:alter": "npm run db:alter:leaders && npm run db:alter:pokemons"
   },
   "keywords": [],
   "author": "",

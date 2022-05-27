@@ -10,16 +10,19 @@ const whereLeader = leader => {
 }
 
 const selectAllFromLeadersAndGyms = leader => sql`
-    SELECT name, badge, description, city
-    FROM leaders AS t
+    SELECT l.name, l.badge, l.description, g.city, array_agg(p.name) AS team
+    FROM leaders AS l
     INNER JOIN gyms AS g
-    ON t.id = g.leader_id
-    ${whereLeader(leader)};
+    ON l.id = g.leader_id
+    INNER JOIN pokemons AS p
+    ON l.id = p.leader_id
+    ${whereLeader(leader)}
+    GROUP BY l.name, l.badge, l.description, g.city;
 `
 
 const selectOne = (col, value) => sql`
     SELECT * FROM leaders
-    WHERE ${sql.identifier([col])} = ${value}
+    WHERE ${sql.identifier([col])} = ${value};
 `
 
 const insertLeader = (name, badge, description) => sql`
@@ -38,12 +41,12 @@ const insertGym = (leaderId, city) => sql`
     );
 `
 
-const selectTeamByLeaderSlug = leader => sql`
-    SELECT l.name, array_agg(p.name) AS team FROM leaders AS l
-    INNER JOIN pokemons AS p
-    ON l.id = p.leader_id
-    WHERE l.slug = ${leader}
-    GROUP BY l.name;
+const linkPokemonToLeader = (pokemon, leader) => sql`
+    UPDATE pokemons
+    SET leader_id = (
+        SELECT id FROM leaders
+        WHERE slug = ${leader}
+    ) WHERE name = ${pokemon};
 `
 
 module.exports = {
@@ -51,5 +54,5 @@ module.exports = {
     insertLeader,
     insertGym,
     selectOne,
-    selectTeamByLeaderSlug,
+    linkPokemonToLeader,
 }

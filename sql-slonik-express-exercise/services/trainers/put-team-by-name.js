@@ -1,10 +1,13 @@
 const errors = require('../../errors')
-const { selectTeam } = require('../../queries/trainers')
+const { putTeamToLeader } = require('../../queries/trainers')
 
 module.exports = db => async (req, res, next) => {
     const { leader } = req.params
+    const { pokemons } = req.body
 
-    const queryResult = await selectTeam(db)(leader)
+    if(!pokemons || !pokemons.length) return next(errors[400])
+
+    const queryResult = await putTeamToLeader(db)(pokemons, leader)
 
     if(!queryResult.ok) return next(errors[400])
 

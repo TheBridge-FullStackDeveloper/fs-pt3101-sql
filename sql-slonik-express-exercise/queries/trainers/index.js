@@ -4,7 +4,7 @@ const {
     insertLeader,
     insertGym,
     selectOne,
-    selectTeamByLeaderSlug,
+    linkPokemonToLeader,
 } = require('./queries')
 
 const selectAll = db => async (trainer) => {
@@ -31,14 +31,20 @@ const insertNewLeader = db => async (name, badge, description, city) => {
     })
 }
 
-const selectTeam = db => async leader => {
-    return await queryCatcher(
-        db.maybeOne, 'leaders, selectTeam fn'
-    )(selectTeamByLeaderSlug(leader))
+const putTeamToLeader = db => async (pokemons, leader) => {
+    return await db.transaction(async tx => {
+        for await(const pokemon of pokemons) {
+            await queryCatcher(
+                tx.query, 'leaders, putTeamToLeader fn'
+            )(linkPokemonToLeader(pokemon, leader))
+        }
+
+        return await selectAll(tx)(leader)
+    })
 }
 
 module.exports = {
     selectAll,
     insertNewLeader,
-    selectTeam,
+    putTeamToLeader,
 }

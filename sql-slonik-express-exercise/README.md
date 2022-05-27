@@ -37,17 +37,17 @@ Apóyate en los ejercicios anteriormente creados en clase para ir siguiendo el e
 
 2. Haz un endpoint para obtener `name`, `badge`, `description` y `city` (de `gyms`) de todos los entrenadores
 ```js
-// GET http://localhost:3000/trainers
+// GET http://localhost:3000/leaders
 ```
 
-3. Haz un endpoint para obtener `name`, `badge` (trainers), lista de pokemons y nombre de ciudad de todos los entrenadores
+3. Haz un endpoint para obtener `name`, `badge` (leaders), lista de pokemons y nombre de ciudad de todos los entrenadores
 ```js
 // GET http://localhost:3000/cities
 ```
 
 4. Haz un endpoint pata obtener el nombre de todos los tipos guardados en base de datos
 ```js
-// GET http://localhost:3000/types
+// GET http://localhost:3000/pokemons/types
 ```
 
 5. Modifica el primer endpoint para que acepte query params de la siguiente manera
@@ -70,13 +70,13 @@ Esto devuelve todos aquellos que sean únicamente de tipo `fire`
 
 8. Crea un endpoint que devuelva un solo entrenador a partir del nombre como route param
 ```js
-// GET http://localhost:3000/trainers/misty
+// GET http://localhost:3000/leaders/misty
 ```
 Fíjate que hay un entrenador que tiene de nombre `Lt. Surge` y todos los nombres empiezan en mayúscula. Quizás debas crear otra columna, que tendrá el formato de los nombres para las búsquedas
 
 9. Crea un endpoint para introducir un nuevo entrenador
 ```js
-// POST http://localhost:3000/trainers/new
+// POST http://localhost:3000/leaders/new
 ```
 El body será así
 ```js
@@ -91,7 +91,7 @@ Recuerda que `city` pertenece a otra entidad
 
 10. Crea un endpoint para enlazar pokémons existentes a entrenadores
 ```js
-// PUT http://localhost:3000/trainers/:trainersName/pokemons
+// PUT http://localhost:3000/leaders/:trainersName/pokemons
 ```
 ```js
 {
@@ -111,7 +111,11 @@ Recuerda que `city` pertenece a otra entidad
 {
   "name": "venusaur",
   "level": "21",
-  "id": 3
+  "id": 3,
+  "types": [
+      "grass",
+      "poison"
+  ]
 }
 ```
 
@@ -119,4 +123,4 @@ Recuerda que `city` pertenece a otra entidad
 Si la PokeApi devuelve `no encontrado`, devuelves lo mismo. Si da algún error diferente, devuelve error de servidor (500)
 
 13. Modifica la tabla `pokemons` para que el `id` no sea `Primary Key`. Modifica el nombre de `id` a `list_id` y crea una nueva columna con el tipo de `PRIMARY_KEY` que quieras (`serial`, `uuid`, etc...)
-Considera también cómo puede afectar eso a la tabla intermedia `pokemons_elements`. Quizás `ON UPDATE CASCADE` te permita hacerlo sin problemas?
+Considera también cómo puede afectar eso a la tabla intermedia `pokemons_elements`.
