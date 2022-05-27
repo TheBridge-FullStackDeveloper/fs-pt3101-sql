@@ -14,7 +14,6 @@ const getNewPokemon = async pokemon => {
         console.info('[api, getNewPokemon fn]')
         console.error('> ', error.message)
 
-        // Refactorizar la respuesta del error
         return {
             api_ok: false,
             statusCode: error.response.status === 404 ? error.response.status : 500,
