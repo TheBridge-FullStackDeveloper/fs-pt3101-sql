@@ -115,3 +115,48 @@ LIMIT 10
 
 -- 21. Devuelve known_name y ciudad del tercer laureado más jóven.
 
+SELECT known_name, birth_city FROM laureates
+ORDER BY birth_date DESC
+LIMIT 1 OFFSET 2   -- OFFSET se salta las dos primeras columnas
+
+-- 22. Devuelve todos los países SIN REPETIR cuyo laureado no haya muerto todavía.
+
+SELECT DISTINCT birth_country from laureates
+WHERE death_date IS NULL
+
+-- 23. Devuelve la quinta, sexta y séptima ciudad de nacimiento de los laureados ordenadas descendentemente. Si se llegasen a repetir haz que no se repitan.
+
+SELECT DISTINCT birth_city FROM laureates
+ORDER BY  birth_city DESC
+LIMIT 3 OFFSET 4
+
+--✨🎉
+
+-- 24. Devuelve el país de nacimiento, known_name y categoría Nobel de los premiados en Química.
+
+SELECT laureates.known_name, nobels.category  FROM laureates
+JOIN nobels 
+ON laureates.id = nobels.id
+WHERE nobels.category = 'Chemistry'
+
+-- 25. Devuelve la suma de los premios de los laureados cuyo país sean USA y Japan.
+
+SELECT laureates.birth_country, SUM(nobels.prize_amount) AS total_amount FROM laureates
+JOIN nobels
+ON laureates.id = nobels.id
+WHERE laureates.birth_country IN ('USA', 'Japan')
+GROUP BY laureates.birth_country -- Me indica que no existen registros
+
+-- 26. Devuelve award_year, categoría, motivación y known_name de aquellos que han ganado un Nobel procedentes de India.
+
+SELECT nobels.award_year, nobels.category, nobels.motivation, laureates.known_name 
+FROM nobels
+JOIN laureates ON nobels.id = laureates.id
+WHERE laureates.birth_country = 'India' -- Me indica que no existen registros
+
+-- 27. Devuelve la afiliación, categoría y known_name de los laureados cuyo género sea female.
+
+SELECT nobels.affiliations, nobels.category, laureates.known_name, laureates.gender
+FROM laureates
+JOIN nobels ON laureates.id = nobels.id
+WHERE laureates.gender = 'female' -- Me indica que no existen registros
