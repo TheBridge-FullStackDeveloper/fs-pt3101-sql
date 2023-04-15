@@ -235,3 +235,4 @@ VALUES (814, 'Albert Fert', 'Albert Fert', 'male',
   '1938-03-07', 'Carcassonne', 'France',
   null, null,
   null);
+
