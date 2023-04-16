@@ -193,3 +193,8 @@ WHERE laureates.full_name NOT LIKE 'A%'
 
 -- 32. Devuelve el known_name, fecha de muerte, categoría y total de años que hace que murieron aquellos que ganaron el Nobel de Química.
 
+SELECT laureates.known_name, laureates.death_date, nobels.category, EXTRACT(YEAR FROM NOW()) - EXTRACT(YEAR FROM laureates.death_date) AS years_since_death
+FROM laureates
+JOIN nobels
+ON laureates.id = nobels.laureate_id
+WHERE nobels.category = 'Chemistry'
