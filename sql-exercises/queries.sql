@@ -134,29 +134,62 @@ LIMIT 3 OFFSET 4
 
 -- 24. Devuelve el país de nacimiento, known_name y categoría Nobel de los premiados en Química.
 
-SELECT laureates.known_name, nobels.category  FROM laureates
+SELECT laureates.birth_country, laureates.known_name, nobels.category  FROM laureates
 JOIN nobels 
-ON laureates.id = nobels.id
+ON laureates.id = nobels.laureate_id
 WHERE nobels.category = 'Chemistry'
 
 -- 25. Devuelve la suma de los premios de los laureados cuyo país sean USA y Japan.
 
 SELECT laureates.birth_country, SUM(nobels.prize_amount) AS total_amount FROM laureates
 JOIN nobels
-ON laureates.id = nobels.id
+ON laureates.id = nobels.laureate_id
 WHERE laureates.birth_country IN ('USA', 'Japan')
-GROUP BY laureates.birth_country -- Me indica que no existen registros
+GROUP BY laureates.birth_country 
 
 -- 26. Devuelve award_year, categoría, motivación y known_name de aquellos que han ganado un Nobel procedentes de India.
 
 SELECT nobels.award_year, nobels.category, nobels.motivation, laureates.known_name 
 FROM nobels
-JOIN laureates ON nobels.id = laureates.id
-WHERE laureates.birth_country = 'India' -- Me indica que no existen registros
+INNER JOIN laureates ON nobels.laureate_id = laureate_id
+WHERE laureates.birth_country = 'India' 
 
 -- 27. Devuelve la afiliación, categoría y known_name de los laureados cuyo género sea female.
 
-SELECT nobels.affiliations, nobels.category, laureates.known_name, laureates.gender
+SELECT nobels.affiliations, nobels.category, laureates.known_name
 FROM laureates
-JOIN nobels ON laureates.id = nobels.id
-WHERE laureates.gender = 'female' -- Me indica que no existen registros
+JOIN nobels ON laureates.id = nobels.laureate_id
+WHERE laureates.gender = 'female' 
+
+-- 28. Devuelve el known_name, edad en la que fue premiado y el premio de los 5 laureados más jóvenes al momento de ser condecorado y cuyos premios sean los más altos.
+
+SELECT laureates.known_name, laureates.birth_date, nobels.date_awarded, nobels.prize_amount FROM laureates
+JOIN nobels
+ON laureates.id = nobels.laureate_id
+ORDER BY birth_date DESC, nobels.prize_amount DESC
+LIMIT 5   -- Corregir!!!!!!!!!!!!!!!!
+
+-- 29. Devuelve el known_name y el premio de los 5 laureados más jóvenes y cuyos premios sean los más altos.
+
+SELECT DISTINCT laureates.known_name, laureates.birth_date, nobels.prize_amount FROM laureates
+JOIN nobels
+ON laureate_id = nobels.laureate_id
+ORDER BY nobels.prize_amount DESC, laureates.birth_date DESC
+LIMIT 5 
+
+-- 30. Devuelve el nombre completo, la motivación y el premio de aquellos laureados que no tienen ninguna afiliación.
+
+SELECT laureates.known_name, nobels.motivation, nobels.prize_amount FROM laureates
+JOIN nobels
+ON laureates.id = nobels.laureate_id
+WHERE nobels.affiliations IS NULL
+
+-- 31. Devuelve el nombre completo, fecha de muerte y afiliación de los laureados cuyo nombre no comienza con la letra 'A'.
+
+SELECT laureates.full_name, laureates.death_date, nobels.affiliations FROM laureates
+JOIN nobels
+ON laureates.id = nobels.laureate_id
+WHERE laureates.full_name NOT LIKE 'A%'
+
+-- 32. Devuelve el known_name, fecha de muerte, categoría y total de años que hace que murieron aquellos que ganaron el Nobel de Química.
+
