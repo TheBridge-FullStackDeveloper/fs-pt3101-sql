@@ -122,8 +122,12 @@ ORDER BY birth_date DESC
 LIMIT 10
 
 -- 21 Devuelve known_name y ciudad del tercer laureado más jóven.
-SELECT known_name, birth_city, birth_date, ROW_NUMBER() OVER (ORDER BY birth_date) 
+-- SELECT known_name, birth_city, birth_date, ROW_NUMBER() OVER (ORDER BY birth_date) 
+-- FROM laureates 
+-- LIMIT 1 OFFSET 2
+SELECT known_name, birth_city
 FROM laureates 
+ORDER BY birth_date DESC 
 LIMIT 1 OFFSET 2
 
 -- 22 Devuelve todos los países SIN REPETIR cuyo laureado no haya muerto todavía.
