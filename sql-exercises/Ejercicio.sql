@@ -100,11 +100,26 @@ FROM "laureates"
 WHERE death_date IS NOT NULL;
 
 -- 20. Devuelve el país y el `full_name` de los 10 laureados más jóvenes.
+SELECT  full_name, birth_country
+FROM "laureates" 
+ORDER BY birth_date DESC
+LIMIT 10;
 
 -- 21. Devuelve `known_name` y ciudad del tercer laureado más jóven.
--- 22. Devuelve todos los países SIN REPETIR cuyo laureado no haya muerto todavía.
--- 23. Devuelve la quinta, sexta y séptima ciudad de nacimiento de los laureados ordenadas descendentemente. Si se llegasen a repetir haz que no se repitan.
+SELECT  full_name, birth_country, birth_date
+FROM "laureates" 
+ORDER BY birth_date DESC
+LIMIT 10;
 
+-- 22. Devuelve todos los países SIN REPETIR cuyo laureado no haya muerto todavía.
+SELECT DISTINCT birth_country 
+FROM "laureates"
+WHERE death_date IS NULL;
+
+-- 23. Devuelve la quinta, sexta y séptima ciudad de nacimiento de los laureados ordenadas descendentemente. Si se llegasen a repetir haz que no se repitan.
+SELECT DISTINCT (birth_city)
+FROM "laureates"
+ORDER BY birth_city DESC LIMIT 3 OFFSET 7
 
 
 
