@@ -1,3 +1,5 @@
+
+-- ##nobels
 --1. Devuelve toda la información de la tabla laureates.
 SELECT * 
 FROM "laureates";
@@ -77,6 +79,31 @@ SELECT award_year,category_fullname,date_awarded
 FROM "nobels"
 WHERE date_awarded IS NULL;
 -- 16. Devuelve la suma de los premios de los Nobel cuyo campo `date_awarded` sea `NULL`
+SELECT SUM(prize_amount) AS sum_prize_amount 
+FROM "nobels"
+WHERE date_awarded IS NULL;
+
+-- ### Laureates
+
+-- 17. Devuelve todos los `known_name` de la tabla `laureates`.
+SELECT known_name FROM "laureates";
+
+-- 18. Devuelve el `known_name` y el año de nacimiento de los 10 laureados más viejos.
+SELECT known_name , birth_date  
+FROM "laureates"
+ORDER BY birth_date ASC
+LIMIT 10;
+
+-- 19. Devuelve el `full_name` y el género y la fecha de la muerte de todos los laureados que no sigan vivos.
+SELECT full_name, gender, death_date 
+FROM "laureates"
+WHERE death_date IS NOT NULL;
+
+-- 20. Devuelve el país y el `full_name` de los 10 laureados más jóvenes.
+
+-- 21. Devuelve `known_name` y ciudad del tercer laureado más jóven.
+-- 22. Devuelve todos los países SIN REPETIR cuyo laureado no haya muerto todavía.
+-- 23. Devuelve la quinta, sexta y séptima ciudad de nacimiento de los laureados ordenadas descendentemente. Si se llegasen a repetir haz que no se repitan.
 
 
 
