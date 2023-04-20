@@ -121,6 +121,23 @@ SELECT DISTINCT (birth_city)
 FROM "laureates"
 ORDER BY birth_city DESC LIMIT 3 OFFSET 7
 
+-- 24. Devuelve el país de nacimiento, `known_name` y categoría Nobel de los premiados en Química.
+SELECT laureates.birth_country , laureates.known_name , nobels.category 
+FROM laureates
+INNER JOIN nobels
+ON laureates.id = nobels.laureate_id
+WHERE nobels.category = 'Chemistry'
 
+-- 25. Devuelve la suma de los premios de los laureados cuyo país sean `USA` y `Japan`.
+SELECT SUM(prize_amount) AS sum_prize_amount 
+FROM nobels
+INNER JOIN laureates
+ON nobels.laureate_id = laureates.id
+WHERE laureates.birth_country IN ( 'USA', 'JAPAN')
 
-
+-- 26. Devuelve `award_year`, categoría, motivación y `known_name` de aquellos que han ganado un Nobel procedentes de India.
+SELECT award_year  , category, motivation, known_name 
+FROM nobels
+INNER JOIN laureates
+ON nobels.laureates_id = laureates.id
+WHERE laureates.birth_country = 'India'

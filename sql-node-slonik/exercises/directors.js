@@ -4,7 +4,8 @@ const { sql } = require('slonik')
 module.exports = {
     // Your directors queries
     async q1() {
-        // README - Directors.1
+            // README - Directors.1
+
     },
 
     async q2() {
