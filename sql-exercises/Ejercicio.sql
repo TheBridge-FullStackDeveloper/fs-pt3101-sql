@@ -129,14 +129,14 @@ ON laureates.id = nobels.laureate_id
 WHERE nobels.category = 'Chemistry'
 
 -- 25. Devuelve la suma de los premios de los laureados cuyo país sean `USA` y `Japan`.
-SELECT SUM(prize_amount) AS sum_prize_amount 
+SELECT SUM(nobels.prize_amount) AS sum_prize_amount 
 FROM nobels
 INNER JOIN laureates
 ON nobels.laureate_id = laureates.id
 WHERE laureates.birth_country IN ( 'USA', 'JAPAN')
 
 -- 26. Devuelve `award_year`, categoría, motivación y `known_name` de aquellos que han ganado un Nobel procedentes de India.
-SELECT award_year  , category, motivation, known_name 
+SELECT nobels.award_year, nobels.category , nobels.motivation, laureates.known_name 
 FROM nobels
 INNER JOIN laureates
 ON nobels.laureates_id = laureates.id
@@ -150,14 +150,14 @@ ON nobels.laureate_id = laureate.id
 WHERE laureate.gender = 'female'
 
 -- 28. Devuelve el `known_name`, edad en la que fue premiado y el premio de los 5 laureados más jóvenes al momento de ser condecorado y cuyos premios sean los más altos.
-SELECT known_name, category_fullname , AGE(nobels.date_awarded, laureates.birth_date) AS age
+SELECT laureates.known_name, nobels.category_fullname, AGE(nobels.date_awarded, laureates.birth_date) AS age
 FROM nobels
 INNER JOIN laureates
 ON nobels.laureate_id = laureates.id
 ORDER BY nobels.prize_amount DESC AGE(nobels.date_awarded, laureates.birth_date) ASC LIMIT 5
 
 -- 29. Devuelve el `known_name` y el premio de los 5 laureados más jóvenes y cuyos premios sean los más altos.
-SELECT known_name, prize_amount 
+SELECT laureates.known_name, nobels.prize_amount 
 FROM nobels
 INNER JOIN laureates
 ON nobels.laureate_id = laureates.id
@@ -191,3 +191,5 @@ FROM nobels
 INNER JOIN laureates
 ON laureates.id = nobels.laureate_id
 ORDER BY LENGTH (laureates.known_name) ASC, AGE(laureates.birth_date) ASC
+
+-- 34. Devuelve `known_name`, la edad actual solo en años, la edad de cuando recibió el Nobel y la categoría del Nobel de aquellos laureados que tengan más de 80 años y aún sigan vivos.
