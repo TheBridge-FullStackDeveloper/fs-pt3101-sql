@@ -73,9 +73,12 @@ module.exports = {
 
     async q16() {
         // README - Movies.16
-        // return await db.query(sql`
-        
-        // `)
+        return await db.query(sql`
+            SELECT major_genre, imdb_rating, imdb_votes FROM movies
+            WHERE imdb_rating IS NOT NULL AND imdb_votes IS NOT NULL
+            ORDER BY imdb_rating DESC, imdb_votes DESC
+            LIMIT 20        
+        `)
     },
 
     async q17() {
