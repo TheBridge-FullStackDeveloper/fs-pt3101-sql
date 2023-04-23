@@ -33,22 +33,28 @@ module.exports = {
 
     async q12() {
         // README - Movies.12
-        // return await db.query(sql`
-        
-        // `)
+        return await db.query(sql`
+            SELECT title, major_genre, production_budget
+            FROM movies
+            WHERE production_budget IS NOT NULL
+            ORDER BY production_budget DESC
+            LIMIT 10           
+        `)
     },
 
     async q13() {
         // README - Movies.13
-        // return await db.query(sql`
-        
-        // `)
+        return await db.query(sql`
+            SELECT title, source 
+            FROM movies
+            WHERE source = 'Remake'
+        `)
     },
 
     async q14() {
         // README - Movies.14
         // return await db.query(sql`
-        
+            
         // `)
     },
 
