@@ -93,9 +93,12 @@ module.exports = {
 
     async q18() {
         // README - Movies.18
-        // return await db.query(sql`
-        
-        // `)
+        return await db.query(sql`
+            SELECT title, release_date
+            FROM movies
+            WHERE release_date > NOW()
+            ORDER BY release_date ASC        
+        `)
     },
 
     async q19() {
