@@ -108,7 +108,11 @@ module.exports = {
         // README - Directors.8
         try{
             return await db.query(sql`
-            
+                SELECT query_name, roles
+                FROM directors
+                WHERE roles
+                LIKE '%,%'
+                AND roles != '' 
             `)
         }
         catch( error ){
