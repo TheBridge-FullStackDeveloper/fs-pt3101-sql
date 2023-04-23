@@ -63,7 +63,10 @@ module.exports = {
         // README - Directors.5
         try{
             return await db.query(sql`
-            
+                SELECT query_name, nationality
+                FROM directors
+                WHERE nationality 
+                IN ('británica,estadounidense','estadounidense,británico')
             `)
         }
         catch( error ){
@@ -75,7 +78,9 @@ module.exports = {
         // README - Directors.6
         try{
             return await db.query(sql`
-            
+                SELECT query_name, nationality
+                FROM directors
+                WHERE roles LIKE '%ajedrecista%'            
             `)
         }
         catch( error ){
