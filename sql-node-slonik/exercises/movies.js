@@ -114,9 +114,11 @@ module.exports = {
 
     async q20() {
         // README - Movies.20
-        // return await db.query(sql`
-        
-        // `)
+        return await db.query(sql`
+            SELECT title, us_gross, worldwide_gross 
+            FROM movies
+            WHERE us_gross = 0 OR worldwide_gross = 0
+        `)
     },
 
     async q21() {
