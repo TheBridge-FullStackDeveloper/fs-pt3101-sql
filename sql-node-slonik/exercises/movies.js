@@ -14,35 +14,63 @@ module.exports = {
 
     async q10() {
         // README - Movies.10
-
+        return await db.query(sql`
+            SELECT title, mpaa_rating
+            FROM movies
+            WHERE mpaa_rating IS NOT NULL
+        `)
     },
 
     async q11() {
         // README - Movies.11
+        return await db.query(sql`
+            SELECT title, production_budget, distributor
+            FROM movies
+            WHERE production_budget < 500000
+            ORDER BY production_budget ASC
+        `)
     },
 
     async q12() {
         // README - Movies.12
+        // return await db.query(sql`
+        
+        // `)
     },
 
     async q13() {
         // README - Movies.13
+        // return await db.query(sql`
+        
+        // `)
     },
 
     async q14() {
         // README - Movies.14
+        // return await db.query(sql`
+        
+        // `)
     },
 
     async q15() {
         // README - Movies.15
+        // return await db.query(sql`
+        
+        // `)
     },
 
     async q16() {
         // README - Movies.16
+        // return await db.query(sql`
+        
+        // `)
     },
 
     async q17() {
         // README - Movies.17
+        // return await db.query(sql`
+        
+        // `)
     },
 
     async q18() {
