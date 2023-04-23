@@ -5,6 +5,14 @@ module.exports = {
     // Your joins from directors and movies queries
     async q24() {
         // README - Directors_Movies.24
+        return await db.query(sql`
+            SELECT directors.query_name, movies.production_budget, movies.distributor 
+            FROM directors 
+            INNER JOIN movies
+            ON directors.id = movies.id
+            WHERE movies.distributor IS NOT NULL
+            ORDER BY movies.production_budget ASC   
+        `)
     },
 
     async q25() {

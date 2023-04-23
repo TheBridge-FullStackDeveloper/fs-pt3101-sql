@@ -123,25 +123,31 @@ module.exports = {
 
     async q21() {
         // README - Movies.21
-        // return await db.query(sql`
-        
-        // `)
+        return await db.query(sql`
+            SELECT title, us_gross FROM movies
+            WHERE us_gross > 0
+            ORDER BY us_gross ASC
+            LIMIT 50
+        `)
         
     },
 
     async q22() {
         // README - Movies.22
-        // return await db.query(sql`
-        
-        // `)
+        return await db.query(sql`
+            SELECT title, source FROM movies
+            WHERE title LIKE 'F%'
+        `)
         
     },
 
     async q23() {
         // README - Movies.23
-        // return await db.query(sql`
-        
-        // `)
+        return await db.query(sql`
+            SELECT distributor, production_budget, creative_type, major_genre
+            FROM movies
+            WHERE production_budget > 10000000 AND distributor LIKE '%Sony%'
+        `)
         
     },
 }
