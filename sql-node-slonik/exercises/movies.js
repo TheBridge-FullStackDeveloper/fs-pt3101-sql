@@ -53,16 +53,22 @@ module.exports = {
 
     async q14() {
         // README - Movies.14
-        // return await db.query(sql`
-            
-        // `)
+        return await db.query(sql`
+            SELECT title, distributor, imdb_rating
+            FROM movies
+            WHERE imdb_rating IS NOT NULL
+            ORDER BY imdb_rating ASC   
+        `)
     },
 
     async q15() {
         // README - Movies.15
-        // return await db.query(sql`
-        
-        // `)
+        return await db.query(sql`
+            SELECT title, rotten_tomatoes_rating 
+            FROM movies
+            ORDER BY rotten_tomatoes_rating ASC
+            LIMIT 100
+        `)
     },
 
     async q16() {
@@ -81,25 +87,46 @@ module.exports = {
 
     async q18() {
         // README - Movies.18
+        // return await db.query(sql`
+        
+        // `)
     },
 
     async q19() {
         // README - Movies.19
+        // return await db.query(sql`
+        
+        // `)
     },
 
     async q20() {
         // README - Movies.20
+        // return await db.query(sql`
+        
+        // `)
     },
 
     async q21() {
         // README - Movies.21
+        // return await db.query(sql`
+        
+        // `)
+        
     },
 
     async q22() {
         // README - Movies.22
+        // return await db.query(sql`
+        
+        // `)
+        
     },
 
     async q23() {
         // README - Movies.23
+        // return await db.query(sql`
+        
+        // `)
+        
     },
 }
