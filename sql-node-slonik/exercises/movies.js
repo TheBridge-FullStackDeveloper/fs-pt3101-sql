@@ -83,9 +83,12 @@ module.exports = {
 
     async q17() {
         // README - Movies.17
-        // return await db.query(sql`
-        
-        // `)
+        return await db.query(sql`
+            SELECT SUM(production_budget) AS production_sumatory
+            FROM movies
+            WHERE mpaa_rating = 'Not Rated' 
+            AND title IS NOT NULL
+        `)
     },
 
     async q18() {
