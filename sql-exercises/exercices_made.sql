@@ -232,7 +232,13 @@ WHERE category = 'Chemistry' AND death_date IS NOT NULL
 
 -- 33 Devuelve known_name, category_fullname y edad actual de los 5 Nobel cuyo known_name sean 
 -- los más cortos, ordenados desde el más joven hasta el más viejo.
-
+SELECT laureates.known_name, nobels.category_fullname, DATE_PART('year', AGE(laureates.birth_date))
+FROM nobels
+INNER JOIN laureates
+ON nobels.laureate_id = laureates.id
+ORDER BY AGE(laureates.birth_date) ASC, 
+LENGTH(laureates.known_name) ASC
+LIMIT 5
 
 
 -- 34 Devuelve known_name, la edad actual solo en años, la edad de cuando recibió el Nobel 
