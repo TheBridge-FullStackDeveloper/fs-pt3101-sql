@@ -103,9 +103,13 @@ module.exports = {
 
     async q19() {
         // README - Movies.19
-        // return await db.query(sql`
-        
-        // `)
+        return await db.query(sql`
+            SELECT title, us_gross, release_date 
+            FROM movies
+            WHERE release_date
+            BETWEEN '1950-01-01' AND '1980-12-31'
+            ORDER BY release_date ASC
+        `)
     },
 
     async q20() {
