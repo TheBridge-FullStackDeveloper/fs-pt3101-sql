@@ -68,7 +68,7 @@ Escribe los SELECT correspondientes dentro de las funciones asociadas a cada que
 11. Devuelve el título, `production_budget` y distribuidora de todas aquellas películas cuyos costes (`production_budget`) hayan sido inferiores a `500000$`
 12. Devuelve el título, `major_genre` y `production_budget` de las 10 películas más costosas
 13. Devuelve el título y el orígen (`source`) de todas las películas cuyo `source` sea `Remake`
-14. Devuelve el título, la distribuidora y el rating imdb de todas las películas cuyo `imdb_rating` no sea null
+14. Devuelve el título, la distribuidora y el rating  imdb de todas las películas cuyo `imdb_rating` no sea null
 15. Devuelve el título y `rotten_tomatoes_rating` de las 100 películas menor valoradas según este campo.
 16. Devuelve el título, `major_genre`, imdb_rating e imdb_votes de las 20 películas mejor valoradas y a la vez con más votos de todas
 17. Devuelve la suma del campo `production_budget` cuyo `mpaa_rating` sea `Not Rated` y el campo título no sea null

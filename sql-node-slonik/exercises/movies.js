@@ -5,10 +5,16 @@ module.exports = {
     // Your movies queries
     async q9() {
         // README - Movies.9
+        return await db.query(sql`
+            SELECT title FROM movies 
+            WHERE title IS NOT null
+        `)
+
     },
 
     async q10() {
         // README - Movies.10
+
     },
 
     async q11() {
