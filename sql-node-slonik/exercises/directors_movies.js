@@ -41,6 +41,13 @@ module.exports = {
 
     async q27() {
         // README - Directors_Movies.27
+        return await db.query(sql`
+            SELECT directors.query_name, movies.distributor 
+            FROM movies
+            INNER JOIN directors
+            ON directors.id = movies.director
+            WHERE directors.name = 'Christopher Nolan'
+        `)
     },
 
     async q28() {
