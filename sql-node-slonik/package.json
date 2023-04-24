@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js",
+    "dev": "set PORT=4000 nodemon src/index.js",
     "start": "node src/index.js",
     "db:create": "node scripts/creations.js",
     "db:insert": "node scripts/insertions.js",
@@ -22,5 +22,8 @@
   "license": "ISC",
   "dependencies": {
     "slonik": "^23.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
