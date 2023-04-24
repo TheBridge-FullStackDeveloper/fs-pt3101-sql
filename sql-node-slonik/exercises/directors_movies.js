@@ -9,18 +9,34 @@ module.exports = {
             SELECT directors.query_name, movies.production_budget, movies.distributor 
             FROM directors 
             INNER JOIN movies
-            ON directors.id = movies.id
+            ON directors.id = movies.director
             WHERE movies.distributor IS NOT NULL
-            ORDER BY movies.production_budget ASC   
+            ORDER BY movies.production_budget ASC     
         `)
     },
 
     async q25() {
         // README - Directors_Movies.25
+        return await db.query(sql`
+            SELECT directors.query_name, count(*) AS movies_made FROM directors
+            INNER JOIN movies
+            ON directors.id = movies.director
+            GROUP BY directors.query_name
+            ORDER BY movies_made DESC        
+        `)
     },
 
     async q26() {
         // README - Directors_Movies.26
+        return await db.query(sql`
+            SELECT directors.query_name, movies.title, movies.imdb_votes 
+            FROM movies
+            INNER JOIN directors
+            ON directors.id = movies.director
+            ORDER BY imdb_votes ASC
+            LIMIT 50
+
+        `)
     },
 
     async q27() {
