@@ -55,8 +55,15 @@ module.exports = {
   async q29() {
     // README - Directors_Movies.29
     return await db.query(sql`
-    SELECT directors.name, movies.release_date, count(*) AS movies_made FROM directors
-    `); // !!!!!!!!!!!!!!!!!!!!Terminar!!!!!!!!!!!!
+    SELECT directors.name, COUNT(*) AS total_movies_made
+    FROM movies
+    INNER JOIN directors
+    ON directors.id = movies.director
+    WHERE movies.release_date BETWEEN '2000-01-01' AND 'NOW()'
+    GROUP BY directors.name
+    ORDER BY total_movies_made DESC
+    LIMIT 1
+    `); // Faltaría mostrar la fecha
   },
 
   async q30() {
@@ -111,8 +118,8 @@ module.exports = {
     // README - Directors_Movies.34
     return await db.query(sql`
     SELECT AVG(rotten_tomatoes_rating) AS average_tomatoes_rating, AVG(imdb_rating) AS average_imdb_rating FROM movies
-    WHERE major_genre = 'Contemporary Fiction' AND imdb_rating IS NOT NULL
-    `); // ME DEVUELVE NULL EN LAS DOS COLUMNAS y faltaría filtrar las películas  enrte el 1990 y el 2000
+    WHERE creative_type = 'Contemporary Fiction' AND imdb_rating IS NOT NULL
+    `); // faltaría filtrar las películas  enrte el 1990 y el 2000
   },
 
   async q35() {
