@@ -139,5 +139,13 @@ module.exports = {
 
     async q35() {
         // README - Directors_Movies.35
+        return await db.query(sql`
+            SELECT directors.name, movies.release_date, movies.us_gross
+            FROM movies
+            INNER JOIN directors
+            ON directors.id = movies.director
+            WHERE movies.source = 'Based on Game'
+            AND movies.us_gross < 500000
+        `)
     },
 }
