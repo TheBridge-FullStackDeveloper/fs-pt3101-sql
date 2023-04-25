@@ -64,7 +64,16 @@ module.exports = {
 
     async q29() {
         // README - Directors_Movies.29
-
+        return await db.query(`
+            SELECT directors.name, COUNT(*) AS total_movies_made
+            FROM movies
+            INNER JOIN directors
+            ON directors.id = movies.director
+            WHERE movies.release_date BETWEEN '2000-01-01' AND 'NOW()'
+            GROUP BY directors.name
+            ORDER BY total_movies_made DESC
+            LIMIT 1
+        `)
     },
 
     async q30() {
@@ -94,10 +103,26 @@ module.exports = {
 
     async q32() {
         // README - Directors_Movies.32
+        return await db.query(sql`
+            SELECT directors.name, movies.title, movies.release_date, movies. mpaa_rating
+            FROM movies
+            INNER JOIN directors
+            ON directors.id = movies.director
+            WHERE mpaa_rating = 'PG-13'
+        `)
     },
 
     async q33() {
         // README - Directors_Movies.33
+        return await db.query(sql`
+            SELECT directors.name, movies.imdb_rating 
+            FROM movies
+            INNER JOIN directors
+            ON directors.id = movies.director
+            WHERE directors.nationality='canadiense' AND imdb_rating IS NOT NULL 
+            ORDER BY imdb_rating DESC 
+            LIMIT 1 OFFSET 4
+        `)
     },
 
     async q34() {
