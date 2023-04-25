@@ -52,18 +52,44 @@ module.exports = {
 
     async q28() {
         // README - Directors_Movies.28
+        return await db.query(sql`
+            SELECT directors.name, SUM(movies.us_gross) AS total_us_gross 
+            FROM directors
+            JOIN movies ON directors.id = movies.director
+            GROUP BY directors.name    
+            ORDER BY total_us_gross DESC
+            LIMIT 1
+        `)
     },
 
     async q29() {
         // README - Directors_Movies.29
+
     },
 
     async q30() {
         // README - Directors_Movies.30
+        return await db.query(sql`
+            SELECT directors.name, movies.major_genre, movies.rotten_tomatoes_rating
+            FROM directors
+            INNER JOIN movies
+            ON directors.id = movies.director
+            WHERE movies.major_genre = 'Drama' 
+            AND rotten_tomatoes_rating > 70
+            ORDER BY rotten_tomatoes_rating ASC
+        `)
     },
 
     async q31() {
         // README - Directors_Movies.31
+        return await db.query(sql`
+            SELECT directors.name, directors.nationality, movies.release_date
+            FROM directors
+            INNER JOIN movies
+            ON directors.id = movies.director
+            WHERE movies.release_date < '1995-12-31'
+            ORDER BY movies.release_date DESC
+        `)
     },
 
     async q32() {
