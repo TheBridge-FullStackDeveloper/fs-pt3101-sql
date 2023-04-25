@@ -165,28 +165,28 @@ ORDER BY nobels.prize_amount, AGE(laureates.birth_date) LIMIT 5
 
 
 -- 30. Devuelve el nombre completo, la motivación y el premio de aquellos laureados que no tienen ninguna afiliación
-SELECT known_name, motivation,prize_amount 
+SELECT laureates.known_name, nobels.motivation,nobels.prize_amount 
 FROM nobels
 INNER JOIN laureates
 ON nobel.laureate_id = laureates.id
 WHERE laureates.affiliations IS NULL
 
 -- 31. Devuelve el nombre completo, fecha de muerte y afiliación de los laureados cuyo nombre no comienza con la letra 'A'.
-SELECT full_name, death_date, affiliations
+SELECT laureates.full_name, laureates.death_date, nobels.affiliations
 FROM laureates
 INNER JOIN nobels
 ON laureates.id = nobels.laureate_id
 WHERE laureates.full_name NOT LIKE 'A%'
 
 -- 32. Devuelve el `known_name`, fecha de muerte, categoría y total de años que hace que murieron aquellos que ganaron el Nobel de Química.
-SELECT known_name,death_date,category, AGE(death_date) AS death 
-FROM nobels
-INNER JOIN laureates
+SELECT laureates.known_name,laureates.death_date,nobels.category, AGE(laureates.death_date) AS death 
+FROM laureates
+INNER JOIN nobels
 ON laureates.id = nobels.laureate_id
 WHERE nobels.category = 'Chemistry'
 
 -- 33. Devuelve `known_name`, `category_fullname` y edad actual de los 5 Nobel cuyo `known_name`sean los más cortos, ordenados desde el más joven hasta el más viejo.
-SELECT known_name, category_fullname, AGE(CURRENT_DATE ,birth_date) 
+SELECT laureates.known_name, nobels.category_fullname, AGE(CURRENT_DATE ,laureates.birth_date) 
 FROM nobels
 INNER JOIN laureates
 ON laureates.id = nobels.laureate_id
