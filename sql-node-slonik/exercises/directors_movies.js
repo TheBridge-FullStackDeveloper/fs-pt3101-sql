@@ -102,6 +102,14 @@ module.exports = {
 
     async q34() {
         // README - Directors_Movies.34
+        return await db.query(`
+            SELECT movies.title, movies.major_genre FROM movies
+            INNER JOIN directors
+            ON directors.id = movies.director
+            WHERE movies.release_date 
+            BETWEEN '1990-01-01' AND '2000-12-31'
+            ORDER BY movies.rotten_tomatoes_rating ASC, movies.imdb_rating ASC
+        `)
     },
 
     async q35() {
