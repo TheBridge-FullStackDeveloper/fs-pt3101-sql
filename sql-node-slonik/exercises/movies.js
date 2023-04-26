@@ -30,18 +30,27 @@ module.exports = {
 
     async q14() {
         // README - Movies.14
+        return await (sql `SELECT title,distributor, imdb_rating FROM movies WHERE imdb_rating IS NOT NULL
+        `)
     },
 
     async q15() {
         // README - Movies.15
+        return await (sql` SELECT title ,rotten_tomatoes_rating FROM movies WHERE rotten_tomatoes_rating IS NOT NULL ORDER BY rotten_tomatoes_rating ASC LIMIT 100`)
+
     },
 
     async q16() {
-        // README - Movies.16
+        // README - Movies.16  
+        return await (sql`SELECT title, major_genre,imdb_rating, imdb_votes 
+        FROM movies 
+        WHERE imdb_rating IS NOT NULL AND  imdb_votes IS NOT NULL AND major_genre IS NOT NULL
+        ORDER BY imdb_rating DESC , imdb_votes DESC LIMIT 20`)
     },
 
     async q17() {
         // README - Movies.17
+        return await (sql `SELECT SUM (production_budget) FROM movies WHERE mpaa_rating != 'Not Rated' AND title IS NOT NULL`)
     },
 
     async q18() {
