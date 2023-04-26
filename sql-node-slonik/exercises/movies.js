@@ -55,6 +55,7 @@ module.exports = {
 
     async q18() {
         // README - Movies.18
+        return await (sql`SELECT title, release_date FROM movies WHERE release_date > NOW() ORDER BY release_date DESC `)
     },
 
     async q19() {
