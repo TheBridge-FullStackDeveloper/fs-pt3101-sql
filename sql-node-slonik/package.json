@@ -1,7 +1,7 @@
 {
   "name": "sql-node-slonik",
   "version": "1.0.0",
-  "description": "",
+  "description": "```js\r   npm run docker:up\r ```\r - Lee el fichero `docker-compose.yml`, descarga las imágenes (si no las tuviera ya descargadas) y levanta los contenedores corriendo `Postgres` y `Adminer`\r ----------",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js",
@@ -22,5 +22,6 @@
   "license": "ISC",
   "dependencies": {
     "slonik": "^23.9.0"
-  }
+  },
+  "devDependencies": {}
 }
