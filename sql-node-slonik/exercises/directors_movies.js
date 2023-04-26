@@ -115,6 +115,7 @@ module.exports = {
         return query.rows;
     },
 
+
     async q34() {
         const query = await db.query(sql`
             SELECT creative_type, AVG(imdb_rating) AS avg_imdb, AVG(rotten_tomatoes_rating) AS avg_rt
