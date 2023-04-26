@@ -5,22 +5,27 @@ module.exports = {
     // Your movies queries
     async q9() {
         // README - Movies.9
+        return await (sql`SELECT title FROM movies WHERE title IS NOT NULL`)
     },
 
     async q10() {
         // README - Movies.10
+        return await (sql`SELECT title, mpaa_rating FROM movies WHERE mpaa_rating IS NOT NULL`)
     },
 
     async q11() {
         // README - Movies.11
+        return await (sql`SELECT title, production_budget, distributor FROM movies WHERE distributor > '500000'`)
     },
 
     async q12() {
         // README - Movies.12
+        return await (sql`SELECT title, major_genre, production_budget FROM movies WHERE production_budget IS NOT NULL  ORDER BY production_budget DESC LIMIT 10`)
     },
 
     async q13() {
         // README - Movies.13
+        return await (sql `SELECT title, source FROM movies WHERE source = 'Remake'`)
     },
 
     async q14() {
