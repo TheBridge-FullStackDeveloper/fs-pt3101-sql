@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "set PORT=4000 nodemon src/index.js",
+    "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "db:create": "node scripts/creations.js",
     "db:insert": "node scripts/insertions.js",
