@@ -18,7 +18,7 @@
 4. Devuelve el nombre completo del Nobel de Ciencias Económicas.
 5. Devuelve la motivación y la categoría del Nobel de la Paz.
 6. Devuelve el nombre completo y el `award_year` de los Nobel dados en el año 2019.
-7. Devuelve el la categoría y el `award_year` de los Nobel dados entre las fechas:
+7. Devuelve la categoría y el `award_year` de los Nobel dados entre las fechas:
 
 - 11 de octubre de 2019
 - 12 de octubre de 2007
