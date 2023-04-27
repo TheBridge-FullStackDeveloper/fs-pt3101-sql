@@ -1,0 +1,20 @@
+{
+  "name": "sql-slonik-express-exercise",
+  "version": "1.0.0",
+  "description": "1. Comprueba que tienes corriendo los contenedores de `postgres` y `adminer` a través de `docker-compose`",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "PORT=4000 nodemon index.js"
+    },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "slonik": "^33.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
