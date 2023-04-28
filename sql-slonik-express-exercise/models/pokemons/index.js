@@ -1,9 +1,16 @@
 const { sql } = require('slonik')
 
-const selectAll = (db) => async () => {
+// 1.- Primer ejercicio y quinto ejercicio
+const selectAll = (db) => async (elementId) => {
     try {
+
         const response = await db.query(sql.unsafe`
-            SELECT * FROM pokemons;
+        SELECT pokemons.id, pokemons.name, array_agg(elements.name) AS types
+        FROM pokemons
+        JOIN pokemons_elements ON pokemons.id = pokemons_elements.pokemon_id
+        JOIN elements ON elements.id = pokemons_elements.element_id
+        WHERE types = ${elementId}
+        GROUP BY pokemons.id;
         `)  
 
         return {
@@ -18,6 +25,9 @@ const selectAll = (db) => async () => {
     }
 }
 
+
+
 module.exports = {
     selectAll,
+    
 }

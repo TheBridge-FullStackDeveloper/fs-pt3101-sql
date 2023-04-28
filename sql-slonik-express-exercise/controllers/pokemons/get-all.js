@@ -12,4 +12,17 @@ module.exports = (db) => async (req, res, next) => {
         success: true,
         data: dbRes.response,
     })
+
+    const elementId = req.params;
+
+    if(!elementId.ok) return next({
+        statusCode: 500,
+        error: new Error('something went wrong!'),
+    })
+
+    res.status(200).json({
+        success: true,
+        data: elementId.response,
+    })
+
 }
