@@ -6,10 +6,10 @@ module.exports = (db) => {
   const gymsControllers = require("./gyms");
   const elementsControllers = require("./elements");
 
-  router.use("/pokemons", userControllers(db));
-  router.use("/triners", trainersControllers(db));
-  router.use("/gyms", gymsControllers(db));
-  router.use("/elements", elementsControllers(db));
+  router.use("/pokemons", pokemonsControllers.getAll(db));
+  // router.use("/triners", trainersControllers(db));
+  // router.use("/gyms", gymsControllers(db));
+  // router.use("/elements", elementsControllers(db));
 
   return router;
 };

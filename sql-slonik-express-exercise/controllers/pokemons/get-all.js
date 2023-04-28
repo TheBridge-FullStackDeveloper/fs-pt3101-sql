@@ -1,4 +1,5 @@
 const queries = require("../../queries/pokemons");
+const errors = require("../../errors");
 
 module.exports = (db) => async (req, res, next) => {
   const result = await queries.selectAll(await db)();

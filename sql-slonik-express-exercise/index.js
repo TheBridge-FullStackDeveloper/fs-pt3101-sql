@@ -1,7 +1,6 @@
 const express = require("express");
 const { DEV_PORT } = require("./constants");
 const db = require("./configs/db");
-
 const app = express();
 
 app.use(express.json());
@@ -11,6 +10,8 @@ const routes = require("./routes");
 app.use(routes(db));
 
 const main = require("./controllers");
+
+app.use(main(db));
 
 app.use((req, res, next) => {
   next({
