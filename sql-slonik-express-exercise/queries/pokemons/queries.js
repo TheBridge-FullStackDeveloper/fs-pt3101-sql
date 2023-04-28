@@ -1,7 +1,7 @@
 const { sql } = require("slonik");
 
 const selectAllPokemons = (pokemon) => sql.unsafe`
-    SELECT 
+    SELECT DISTINCT
       pokemons.id AS "id", 
       pokemons.name AS "name", 
       array(
