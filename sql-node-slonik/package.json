@@ -22,5 +22,8 @@
   "license": "ISC",
   "dependencies": {
     "slonik": "^23.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

@@ -19,7 +19,7 @@ const users = async () => {
       id TEXT PRIMARY KEY,
       name TEXT NOT NULL,
       dni TEXT UNIQUE NOT NULL,
-      birthdate DATE NOT NULL
+      birthdate DATE 
     );
   `);
 };
