@@ -23,12 +23,14 @@ Apóyate en los ejercicios anteriormente creados en clase para ir siguiendo el e
 // GET http://localhost:3000/pokemons
 ```
 ```js
+// Respuesta de la petición
   {
-    data: [
+    "success": true
+    "data": [
       {
-        id: 1,
-        name: 'bulbasaur',
-        types: ['poison', 'grass']
+        "id": 1,
+        "name": "bulbasaur",
+        "types": ["poison", "grass"]
       },
       ...
     ]
@@ -80,11 +82,15 @@ Fíjate que hay un entrenador que tiene de nombre `Lt. Surge` y todos los nombre
 ```
 El body será así
 ```js
+// Respuesta de la petición
 {
-  "name": "trainer name",
-  "badge": "badge name",
-  "description": "trainer types description",
-  "city": "city name"
+  "success": true,
+  "data": {
+    "name": "trainer name",
+    "badge": "badge name",
+    "description": "trainer types description",
+    "city": "city name"
+  }
 }
 ```
 Recuerda que `city` pertenece a otra entidad
@@ -94,8 +100,10 @@ Recuerda que `city` pertenece a otra entidad
 // PUT http://localhost:3000/trainers/:trainersName/pokemons
 ```
 ```js
+// Respuesta de la petición
 {
-  "pokemons": [
+  "success: true,
+  "data": [
     "Geodude",
     "Pikachu",
     "Gyarados",
@@ -108,10 +116,14 @@ Recuerda que `city` pertenece a otra entidad
 // POST http://localhost:3000/pokemons/new
 ```
 ```js
+// Respuesta de la petición
 {
-  "name": "venusaur",
-  "level": "21",
-  "id": 3
+  "success": true,
+  "data": {
+    "name": "venusaur",
+    "level": "21",
+    "id": 3
+  }
 }
 ```
 
@@ -120,3 +132,63 @@ Si la PokeApi devuelve `no encontrado`, devuelves lo mismo. Si da algún error d
 
 13. Modifica la tabla `pokemons` para que el `id` no sea `Primary Key`. Modifica el nombre de `id` a `list_id` y crea una nueva columna con el tipo de `PRIMARY_KEY` que quieras (`serial`, `uuid`, etc...)
 Considera también cómo puede afectar eso a la tabla intermedia `pokemons_elements`. Quizás `ON UPDATE CASCADE` te permita hacerlo sin problemas?
+
+### BONUS! (Solo si se ha dado autenticación/autorización)
+
+#### Antes de empezar, instala lo siguiente
+```js
+// npm i simple-stateless-auth-library
+// npm i -D dotenv
+```
+
+14. Crea una nueva tabla en base de datos, llamada users. Esta nueva entidad tendrá las siguientes columnas:
+- id (uuid PK) (Recuerda que puedes usar la extensión "uuid-ossp" para generarlos)
+- email (text unique not null)
+- password (text not null)
+
+15. Crea ruta, controlador y modelo para hacer un registro (usa los campos "email" y "contraseña" para realizarlo y no olvides comprobar que existen cuando los recibes en el body)
+```js
+// POST http://localhost:3000/auth/register
+```
+```js
+// Respuesta de la petición
+{
+  "success": true
+}
+```
+
+16. Crea ruta, controlador y modelo para hacer login (usa los campos "email" y "contraseña" para realizarlo y no olvides comprobar que existen cuando los recibes en el body). Recuerda devolver los errores correspondientes en caso de no existir dicho usuario o que la contraseña no sea la correcta y acabar devolviendo la cookie con el JWT.
+```js
+// POST http://localhost:3000/auth/login
+```
+```js
+// Respuesta de la petición
+{
+  "success": true
+}
+```
+
+17. Crea ruta, controlador y modelo para hacer logout (la cookie debe desaparecer de Postman una vez vamos a este endpoint)
+```js
+// POST http://localhost:3000/auth/logout
+```
+```js
+// Respuesta de la petición
+{
+  "success": true
+}
+```
+
+18. Crea un middleware para proteger rutas. Éste debe ser capaz de deserializar la cookie que recibe y cargar el contenido en "res.locals". En caso de no estar logado y no poder obtener la cookie, deberás responder con un error 401. Protege las siguientes rutas:
+- GET http://localhost:3000/pokemons/type/:element
+- GET http://localhost:3000/pokemons/:name
+- GET http://localhost:3000/trainers/:name
+- POST http://localhost:3000/pokemons/new
+- POST http://localhost:3000/auth/logout
+```js
+// En caso de no estar logado
+{
+  "success": false,
+  "message": "unauthorized"
+}
+```
