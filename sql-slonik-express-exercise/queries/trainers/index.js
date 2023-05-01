@@ -1,4 +1,5 @@
 const { selectAllTrainers } = require("./queries");
+const { selectCities } = require("./cities-query");
 
 const selectAll = (db) => async () => {
   try {
@@ -15,6 +16,22 @@ const selectAll = (db) => async () => {
   }
 };
 
+const selectAllCities = (db) => async () => {
+  try {
+    const cities = await db.query(selectCities());
+
+    return {
+      response: cities.rows,
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      error: error.message,
+    };
+  }
+};
+
 module.exports = {
   selectAll,
+  selectAllCities,
 };
