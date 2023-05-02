@@ -1,12 +1,10 @@
-const { sql } = require('slonik')
+const { selectAll, selectTrainer } = require('./queries')
 
-// 2.- Primer ejercicio
-const selectLead = (db) => async () => {
+
+
+const chooseAll = (db) => async () => {
     try {
-        const response = await db.query(sql.unsafe`
-        SELECT name, badge, description, city
-        FROM leaders INNER JOIN gyms ON gyms.leader_id = leaders.id
-        `)  
+        const response = await db.query(selectAll())
 
         return {
             ok: true,
@@ -20,6 +18,23 @@ const selectLead = (db) => async () => {
     }
 }
 
+const chooseLead = (db) => async (trainer) => {
+    try {
+        const result = await db.query(selectTrainer(trainer))
+
+        return {
+            ok: true,
+            response: result.rows,
+        }
+    } catch(error) {
+        return {
+            ok: false,
+            message: error.message,
+        }
+    }
+}
+
 module.exports = {
-    selectLead,
+    chooseAll,
+    chooseLead,
 }

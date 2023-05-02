@@ -2,18 +2,20 @@ const queries = require('../../models/pokemons')
 
 module.exports = (db) => async (req, res, next) => {
    
-   
-    const elementId = req.query.type
-    const dbRes = await queries.chooseAll(await db)(elementId)
+    const type = req.params.id
 
-    if(!dbRes.ok) return next({
+    const result = await queries.chooseType(await db)(type)
+
+    if(!result.ok) return next({
         statusCode: 500,
         error: new Error('something went wrong!'),
     })
 
     res.status(200).json({
         success: true,
-        data: dbRes.response,
+        response: result.response
+        
+        
     })
     
 }

@@ -1,6 +1,6 @@
 const { sql } = require('slonik')
 
-// 1.- Primer ejercicio
+// 4.- Cuarto ejercicio
 const selectType = (db) => async () => {
     try {
         const response = await db.query(sql.unsafe`
