@@ -25,8 +25,23 @@ ON  leaders.id = gyms.leader_id
 
 `)
 
+const selectAllTrainersDinamic = (params) => (sql.unsafe`
+SELECT leaders.name, leaders.badge,leaders.description, gyms.city, REPLACE(REPLACE(LOWER(leaders.name), ' ', ''), '.', '') AS Búsqueda
+FROM leaders
+INNER JOIN gyms
+ON   REPLACE(REPLACE(LOWER(leaders.name), ' ', ''), '.', '') = ${params}
+
+`)
+
+const NewTrainers = (params) => (sql.unsafe`
+
+
+`)
+
 
 module.exports = {
     selectAllTrainers,
-    selectAllCitiesTrainers
+    selectAllCitiesTrainers,
+    selectAllTrainersDinamic
+    NewTrainers
 }

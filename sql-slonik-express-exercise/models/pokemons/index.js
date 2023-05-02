@@ -1,4 +1,4 @@
-const { selectAllPokemons } =require('./queries');
+const { selectAllPokemons, selectAllPokemonsD } =require('./queries');
 const { selectAllPokemonsTypes } = require('./queries');
 const { selectAllPokemonsDinamic } = require('./queries');
 
@@ -43,7 +43,26 @@ const selectAllType = (db) => async () => {
 const selectAllTypeDinamic = (db,params) => async () => {
     try {
 
-        const response = await db.query(selectAllPokemonsDinamic(params))
+        const response = await db.query(selectAllPokemonsD(params))
+
+        return {
+            ok: true,
+            response: response.rows
+        }
+    } catch(error) {
+        console.log(error)
+        return {
+            ok: false,
+            message: error.message,
+        }
+    }
+}
+
+const selectAllPD = (db,params) => async () => {
+    try {
+        console.log("Hola")
+        const response = await db.query(selectAllPokemonsD(params))
+
 
         return {
             ok: true,
@@ -62,5 +81,6 @@ const selectAllTypeDinamic = (db,params) => async () => {
 module.exports = {
     selectAllP,
     selectAllType,
-    selectAllTypeDinamic
+    selectAllTypeDinamic,
+    selectAllPD,
 }

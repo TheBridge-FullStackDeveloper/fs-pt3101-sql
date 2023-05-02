@@ -1,5 +1,8 @@
+const getAllPokemonsdinamic = require('./get-all-pokemonsdinamic');
+
 module.exports = {
     getAllPokemons : require ('./get-all-pokemons'),   
     getAllTypes : require ('./get-all-types'),
-    getAllTypeDinamic : require ('./get-all-typeDinamic')
+    getAllTypeDinamic : require ('./get-all-typeDinamic'),
+    getAllPokemonsdinamic : require ('./get-all-pokemonsdinamic')
 }

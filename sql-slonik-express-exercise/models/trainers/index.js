@@ -1,4 +1,4 @@
-const { selectAllTrainers} = require('./queries')
+const { selectAllTrainers, selectAllTrainersDinamic, NewTrainers} = require('./queries')
 const { selectAllCitiesTrainers } = require('./queries')
 
 const selectAll = (db) => async () => {
@@ -40,8 +40,48 @@ const selectAllC = (db) => async () => {
     }
 }
 
+const selectAllT = (db,params) => async () => {
+    try {
+       
+        const response = await db.query(selectAllTrainersDinamic(params))
+
+
+        return {
+            ok: true,
+            response: response.rows
+        }
+    } catch(error) {
+        console.log(error)
+        return {
+            ok: false,
+            message: error.message,
+        }
+    }
+}
+
+const AllNewTrainer = (db,params) => async () => {
+    try {
+       
+        const response = await db.query(NewTrainers (params))
+
+
+        return {
+            ok: true,
+            response: response.rows
+        }
+    } catch(error) {
+        console.log(error)
+        return {
+            ok: false,
+            message: error.message,
+        }
+    }
+}
+
 
 module.exports = {
     selectAll,
-    selectAllC
+    selectAllC,
+    selectAllT,
+    AllNewTrainer,
 }
