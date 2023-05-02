@@ -47,7 +47,7 @@ Apóyate en los ejercicios anteriormente creados en clase para ir siguiendo el e
 // GET http://localhost:3000/cities
 ```
 
-4. Haz un endpoint pata obtener el nombre de todos los tipos guardados en base de datos
+4. Haz un endpoint para obtener el nombre de todos los tipos guardados en base de datos
 ```js
 // GET http://localhost:3000/types
 ```

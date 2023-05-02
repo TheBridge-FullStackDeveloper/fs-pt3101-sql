@@ -1,3 +1,5 @@
+--Incluidas las modificaciones indicadas en el ejercicio 13
+
 -- Borrado de todo
 DROP TABLE IF EXISTS pokemons_elements;
 DROP TABLE IF EXISTS gyms;
@@ -30,7 +32,8 @@ CREATE TABLE IF NOT EXISTS elements (
 );
 
 CREATE TABLE IF NOT EXISTS pokemons (
-  id smallint PRIMARY KEY NOT NULL,
+  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  list_id smallint NOT NULL,
   name TEXT NOT NULL,
   level smallint NOT NULL DEFAULT 1,
   leader_id uuid REFERENCES leaders

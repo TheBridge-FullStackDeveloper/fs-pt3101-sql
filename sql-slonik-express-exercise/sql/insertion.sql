@@ -110,7 +110,7 @@ INSERT INTO elements (
 
 -- Inserción de filas para "POKÉMONS"
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   74, 'Geodude', 10, (
     SELECT id FROM leaders WHERE name LIKE 'Brock'
@@ -118,7 +118,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   95, 'Onix', 12, (
     SELECT id FROM leaders WHERE name LIKE 'Brock'
@@ -126,7 +126,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   120, 'Staryu', 18, (
     SELECT id FROM leaders WHERE name LIKE 'Misty'
@@ -134,7 +134,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   121, 'Starmie', 21, (
     SELECT id FROM leaders WHERE name LIKE 'Misty'
@@ -142,7 +142,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   26, 'Raichu', 28, (
     SELECT id FROM leaders WHERE name LIKE 'Lt. Surge'
@@ -150,7 +150,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   114, 'Tangela', 30, (
     SELECT id FROM leaders WHERE name LIKE 'Erika'
@@ -158,7 +158,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   70, 'Weepinbell', 32, (
     SELECT id FROM leaders WHERE name LIKE 'Erika'
@@ -166,7 +166,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   44, 'Gloom', 32, (
     SELECT id FROM leaders WHERE name LIKE 'Erika'
@@ -174,7 +174,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   48, 'Venonat', 44, (
     SELECT id FROM leaders WHERE name LIKE 'Koga'
@@ -182,7 +182,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   49, 'Venomoth', 50, (
     SELECT id FROM leaders WHERE name LIKE 'Koga'
@@ -190,7 +190,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   63, 'Abra', 50, (
     SELECT id FROM leaders WHERE name LIKE 'Sabrina'
@@ -198,7 +198,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   64, 'Kadabra', 50, (
     SELECT id FROM leaders WHERE name LIKE 'Sabrina'
@@ -206,7 +206,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   65, 'Alakazam', 50, (
     SELECT id FROM leaders WHERE name LIKE 'Sabrina'
@@ -214,7 +214,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   38, 'Ninetales', 48, (
     SELECT id FROM leaders WHERE name LIKE 'Blaine'
@@ -222,7 +222,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   78, 'Rapidash', 50, (
     SELECT id FROM leaders WHERE name LIKE 'Blaine'
@@ -230,7 +230,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   59, 'Arcanine', 54, (
     SELECT id FROM leaders WHERE name LIKE 'Blaine'
@@ -238,7 +238,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   51, 'Dugtrio', 50, (
     SELECT id FROM leaders WHERE name LIKE 'Giovanni'
@@ -246,7 +246,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   53, 'Persian', 53, (
     SELECT id FROM leaders WHERE name LIKE 'Giovanni'
@@ -254,7 +254,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   31, 'Nidoqueen', 53, (
     SELECT id FROM leaders WHERE name LIKE 'Giovanni'
@@ -262,7 +262,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   34, 'Nidoking', 55, (
     SELECT id FROM leaders WHERE name LIKE 'Giovanni'
@@ -270,7 +270,7 @@ INSERT INTO pokemons (
 );
 
 INSERT INTO pokemons (
-  id, name, level, leader_id
+  list_id, name, level, leader_id
 ) VALUES (
   112, 'Rhydon', 55, (
     SELECT id FROM leaders WHERE name LIKE 'Giovanni'
