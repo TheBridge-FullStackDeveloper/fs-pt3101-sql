@@ -1,6 +1,19 @@
+require('dotenv').config()
+
+const port = process.env.PORT
+const dbUrl = process.env.DB_URL
+const secret = process.env.SECRET
+
+
 const express = require("express")
+const cookieParser = require('cookie-parser')
 const db = require('./config/db')
 const app = express()
+
+
+
+app.use(express.json())
+app.use(cookieParser())
 
 const routes = require('./routes')
 
