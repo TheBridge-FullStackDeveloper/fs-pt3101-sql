@@ -1,6 +1,7 @@
 const errors = require("../../misc/errors");
 const { getAllTypes } = require("../../models/types");
 
+//Ejercicio 4
 module.exports = (db) => async (req,res,next) => {
     const result = await getAllTypes(await db)();
 

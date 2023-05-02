@@ -1,6 +1,7 @@
 const errors = require("../../misc/errors");
 const {getAllTrainers} = require("../../models/trainers");
 
+//Ejercicio 2
 module.exports = (db) => async (req, res, next) => {
     const result = await getAllTrainers(await db)();
 

@@ -1,6 +1,7 @@
 const errors = require("../../misc/errors");
 const { getPokemonByOnlyType } = require("../../models/pokemons");
 
+//Ejercicio 6
 module.exports = (db) => async (req, res, next) => {
 	const result = await getPokemonByOnlyType(await db)(req.params.type);
 

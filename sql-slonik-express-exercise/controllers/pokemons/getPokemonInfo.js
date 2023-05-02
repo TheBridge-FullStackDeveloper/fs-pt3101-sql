@@ -1,6 +1,7 @@
 const errors = require("../../misc/errors");
 const { getPokemonInfo } = require("../../models/pokemons");
 
+//Ejercicio 7
 module.exports = (db) => async (req, res, next) => {
 	const result = await getPokemonInfo(await db)(req.params.name);
 
@@ -11,3 +12,4 @@ module.exports = (db) => async (req, res, next) => {
 		data: result.data
 	})
 }
+

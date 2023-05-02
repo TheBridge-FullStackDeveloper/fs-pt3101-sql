@@ -1,6 +1,7 @@
 const { sql } = require("slonik");
 const { v4: uuidv4 } = require("uuid");
 
+//Ejercicio 9
 module.exports = (db) => async (trainerInfo) => {
     try {
         const newTrainerId = uuidv4();

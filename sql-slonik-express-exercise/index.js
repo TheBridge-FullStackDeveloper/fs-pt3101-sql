@@ -1,12 +1,14 @@
-const DEV_PORT = 4000;
+require("dotenv").config();
 const express = require("express");
 const app = express();
+const cookieParser = require("cookie-parser");
 const db = require("./configs/db");
 const errors = require("./misc/errors");
 
 app.use(express.json());
+app.use(cookieParser());
 
-const main = require("./controllers")
+const main = require("./routes");
 
 app.use(main(db));
 
@@ -22,4 +24,4 @@ app.use(({statusCode, error}, req, res, next) => {
 });
 
 
-app.listen(DEV_PORT, () => console.info(`> Listening at ${DEV_PORT}`));
+app.listen(process.env.PORT, () => console.info(`> Listening at ${process.env.PORT}`));

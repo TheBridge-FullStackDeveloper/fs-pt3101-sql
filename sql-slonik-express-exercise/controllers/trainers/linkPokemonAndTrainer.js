@@ -1,6 +1,7 @@
 const errors = require("../../misc/errors");
 const { linkPokemonAndTrainer } = require("../../models/trainers");
 
+//Ejercicio 10
 module.exports = (db) => async (req,res,next) => {
     const result = await linkPokemonAndTrainer(await db)(req.params.trainerName, req.body);
 

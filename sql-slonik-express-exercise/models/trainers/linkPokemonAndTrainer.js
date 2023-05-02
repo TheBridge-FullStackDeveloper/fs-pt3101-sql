@@ -1,5 +1,6 @@
 const { sql } = require("slonik");
 
+//Ejercicio 10
 module.exports = (db) => async (trainer, pokemonsArray) => {
     const pokeArray = pokemonsArray.pokemons;
 

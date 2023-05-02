@@ -1,5 +1,6 @@
 const { sql } = require("slonik");
 
+//Ejercicio 8
 module.exports = (db) => async (name) => {
 	try{
 		const result = await db.query(sql.unsafe`

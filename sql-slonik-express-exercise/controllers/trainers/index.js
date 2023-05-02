@@ -1,11 +1,12 @@
 const router = require("express").Router();
+const { authorizer } = require("../../middlewares");
 
 module.exports = (db) => {
     const getAllTrainers = require("./getAllTrainers");
     router.get("/", getAllTrainers(db));
 
     const getTrainerInfo = require("./getTrainerInfo")
-    router.get("/:name", getTrainerInfo(db));
+    router.get("/:name", authorizer, getTrainerInfo(db));
 
     const addNewTrainer = require("./addNewTrainer");
     router.post("/new", addNewTrainer(db));

@@ -1,7 +1,11 @@
 module.exports = {
     400: {
       statusCode: 400,
-      error: new Error("something went wrong"),
+      error: new Error("all fields are mandatory"),
+    },
+    wrong_data: {
+      statusCode: 400,
+      error: new Error("username or password incorrects"),
     },
     401: {
       statusCode: 401,
@@ -21,6 +25,6 @@ module.exports = {
     },
     500: {
       statusCode: 500,
-      error: new Error("Something went very wrong!"),
+      error: new Error("Something went wrong!"),
     },
   };
