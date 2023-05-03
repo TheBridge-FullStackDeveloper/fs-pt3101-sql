@@ -34,7 +34,24 @@ const chooseLead = (db) => async (trainer) => {
     }
 }
 
+const postLead = (db) => async (name, badge, description, city) => {
+    try {
+        const resultNew = await db.query(postTrainer(name, badge, description, city))
+
+        return {
+            ok: true,
+            response: resultNew.rows,
+        }
+    } catch(error) {
+        return {
+            ok: false,
+            message: error.message,
+        }
+    }
+}
+
 module.exports = {
     chooseAll,
     chooseLead,
+    postLead,
 }
