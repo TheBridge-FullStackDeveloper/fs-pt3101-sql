@@ -1,10 +1,13 @@
 const express = require('express')
 const db = require('./configs/db')
 const app = express()
+const morgan = require('morgan')
 
 const routes = require('./routes')
-
+app.use(morgan('dev'))
+app.use(express.json())
 app.use(routes(db))
+
 
 app.use((req, res, next) => {
     next({

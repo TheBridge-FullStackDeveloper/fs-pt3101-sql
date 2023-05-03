@@ -35,6 +35,9 @@ ON   REPLACE(REPLACE(LOWER(leaders.name), ' ', ''), '.', '') = ${params}
 
 const NewTrainers = (params) => (sql.unsafe`
 
+SELECT leaders.name
+FROM leaders
+
 
 `)
 
@@ -42,6 +45,6 @@ const NewTrainers = (params) => (sql.unsafe`
 module.exports = {
     selectAllTrainers,
     selectAllCitiesTrainers,
-    selectAllTrainersDinamic
+    selectAllTrainersDinamic,
     NewTrainers
 }

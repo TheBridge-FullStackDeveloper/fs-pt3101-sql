@@ -77,10 +77,27 @@ const selectAllPD = (db,params) => async () => {
     }
 }
 
+const selectAllNP = (db,body) => async () => {
+    try {
+        const response = await db.query(selectAllPokemonsD(body))
+        return {
+            ok: true,
+            response: response.rows
+        }
+    } catch(error) {
+        console.log(error)
+        return {
+            ok: false,
+            message: error.message,
+        }
+    }
+}
+
 
 module.exports = {
     selectAllP,
     selectAllType,
     selectAllTypeDinamic,
     selectAllPD,
+    selectAllNP
 }
