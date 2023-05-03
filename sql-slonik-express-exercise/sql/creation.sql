@@ -21,7 +21,8 @@ CREATE TABLE IF NOT EXISTS leaders (
   id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
   name TEXT NOT NULL,
   badge TEXT NOT NULL,
-  description TEXT NOT NULL
+  description TEXT NOT NULL,
+  
 );
 
 CREATE TABLE IF NOT EXISTS elements (

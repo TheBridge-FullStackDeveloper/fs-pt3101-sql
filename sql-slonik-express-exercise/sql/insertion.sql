@@ -1,4 +1,4 @@
--- Inserción de filas para "LEADERS"
+--Inserción de filas para "LEADERS"
 INSERT INTO leaders (
   name, badge, description
 ) VALUES (
