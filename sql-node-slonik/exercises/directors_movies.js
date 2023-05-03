@@ -5,6 +5,7 @@ module.exports = {
     // Your joins from directors and movies queries
     async q24() {
         // README - Directors_Movies.24
+
     },
 
     async q25() {

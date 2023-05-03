@@ -62,6 +62,7 @@ Devolviendo así todos los pokémon que contengan, entre sus tipos, los designad
 6. Crea un endpoint que devuelva todos los pokémon del tipo único especificado a través de route params
 ```js
 // GET http://localhost:3000/pokemons/type/fire
+// GET http://localhost:3000/pokemons/type/:type
 ```
 Esto devuelve todos aquellos que sean únicamente de tipo `fire`
 
