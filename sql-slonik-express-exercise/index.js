@@ -1,23 +1,27 @@
-const express = require('express')
-const db = require('./configs/db')
-const app = express()
+require("dotenv").config();
+const express = require("express");
+const app = express();
+const cookieParser = require("cookie-parser");
+const db = require("./configs/db");
+const errors = require("./misc/errors");
 
-const routes = require('./routes')
+app.use(express.json());
+app.use(cookieParser());
 
-app.use(routes(db))
+const main = require("./routes");
 
-app.use((req, res, next) => {
-    next({
-        statusCode: 404,
-        error: new Error('path not found'),
-    })
+app.use(main(db));
+
+app.use((req,res,next) => {
+  next(errors[400]);
 })
 
-app.use(({statusCode, error}, req, res, next) =>{
+app.use(({statusCode, error}, req, res, next) => {
     res.status(statusCode).json({
-        success: false,
-        messasge: error.message,
+      success: false,
+      message: error.message
     })
-})
+});
 
-app.listen(process.env.PORT, () => console.info(`> listening at ${process.env.PORT}`))
+
+app.listen(process.env.PORT, () => console.info(`> Listening at ${process.env.PORT}`));
