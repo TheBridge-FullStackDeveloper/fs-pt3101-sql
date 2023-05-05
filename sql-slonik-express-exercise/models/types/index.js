@@ -1,5 +1,5 @@
 const { selectAllTypes } = require('./queries');
-
+// Ejercicio 4
 const selectTypes = (db) => async () => {
     try{
         const response = await db.query( selectAllTypes() );

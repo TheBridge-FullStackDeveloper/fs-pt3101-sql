@@ -1,3 +1,4 @@
+// Ejercicio 2
 const { selectAllTrainers } = require('./queries');
 
 const selectTrainers = (db) => async () => {

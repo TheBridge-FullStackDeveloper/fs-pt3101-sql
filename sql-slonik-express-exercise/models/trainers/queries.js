@@ -1,6 +1,6 @@
 const { sql } = require('slonik');
 
-
+// Ejercicio 2
 const selectAllTrainers = () => sql.unsafe`
     SELECT leaders.name, leaders.badge, leaders.description, gyms.city  AS City_Gym
     FROM leaders

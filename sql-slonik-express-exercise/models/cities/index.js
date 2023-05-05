@@ -1,3 +1,4 @@
+// Ejercicio 3
 const { sql } = require('slonik');
 
 const selectCities = (db) => async () => {
