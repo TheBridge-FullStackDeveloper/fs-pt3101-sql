@@ -3,6 +3,7 @@ module.exports={
     getTrainers:require("./get-trainers"),
     getCities:require("./trainers-cities"),
     allTypes:require("./get-types"),
-    onlyType:require("./only-type")
+    onlyType:require("./only-type"),
+    onePokemon:require("./one-pokemon")
 
 }

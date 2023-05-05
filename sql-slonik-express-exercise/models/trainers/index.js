@@ -1,3 +1,4 @@
+const onePokemon = require("../../controllers/trainers/one-pokemon");
 const { selectALLPokemons, selectTrainers, trainersCities, differentsTypes, toOnlyType } = require("./queries")
 
 const selectAll = (db) => async () => {
@@ -81,11 +82,26 @@ const getCities = (db) => async () => {
     }
  }
 
+ const onePoke = (db)=>async (name) =>{
+    try {
+        const response = await db.query(onePokemon(name))
+        return{
+            ok:true,
+            response:response.rows
+        }
+    } catch (error) {
+        return{
+            ok:false,
+            message:error.message
+        }
+    }
+ }
 
 module.exports = {
     selectAll,
     selectAllTrainers,
     getCities,
     allTypes,
-    onlyType
+    onlyType,
+    onePoke
 }

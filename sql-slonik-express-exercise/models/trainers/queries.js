@@ -34,12 +34,19 @@ INNER JOIN elements e ON pe.element_id=e.id
 where e.name = ${type}
 `
 
+const onePokemon = (name)=> sql.unsafe`
+SELECT p.list_id, p.name, JSON_AGG(elements.name) AS type FROM pokemons p
+INNER JOIN pokemons_elements as pe ON p.id = pe.pokemon_id 
+INNER JOIN elements as e ON e.id = pe.element_id
+WHERE LOWER(p.name) = ${name}
+GROUP BY p.id`
 
 module.exports={
     selectALLPokemons,
     selectTrainers,
     trainersCities,
     differentsTypes,
-    toOnlyType
+    toOnlyType,
+    onePokemon
 }
 
