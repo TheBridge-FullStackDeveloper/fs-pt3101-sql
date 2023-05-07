@@ -7,6 +7,13 @@ const selectAllTrainers = () => sql.unsafe`
     INNER JOIN gyms ON leaders.id = gyms.leader_id  
 `
 
+// Ejercicio 8
+const selectOneByName = ( name ) => sql.unsafe`
+    SELECT name, badge, description FROM leaders
+    WHERE name ILIKE ${name}
+`
+
 module.exports = {
     selectAllTrainers,
+    selectOneByName,
 }

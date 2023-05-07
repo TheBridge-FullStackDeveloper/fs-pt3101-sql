@@ -1,10 +1,11 @@
+const { sql } = require('slonik')
+
 // Llamo a la funcion que está dentro de QUERIES
 const { selectAllPokemons }     = require('./queries');
 const { pokemonsByType }        = require('./queries');
 const { typesOnly }             = require('./queries');
 const { namesOnly }             = require('./queries');
 
-const { sql } = require('slonik')
 
 // Por ejercicio 1
 const selectAll = (db) => async () => {
