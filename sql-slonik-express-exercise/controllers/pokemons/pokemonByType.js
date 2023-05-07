@@ -24,4 +24,5 @@ module.exports = ( db ) => async(req, res, next) => {
         success : true,
         data    : dbRes.response,
     });
+
 }

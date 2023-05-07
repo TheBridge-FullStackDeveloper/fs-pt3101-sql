@@ -1,7 +1,8 @@
 // Llamo a la funcion que está dentro de QUERIES
 const { selectAllPokemons }     = require('./queries');
 const { pokemonsByType }        = require('./queries');
-const { typesOnly }             = require('./queries')
+const { typesOnly }             = require('./queries');
+const { namesOnly }             = require('./queries');
 
 const { sql } = require('slonik')
 
@@ -69,8 +70,30 @@ const selectByTypesOnly = (db) => async ( type = null ) => {
     }
 }
 
+//Ejercicio 7
+const selectByNameOnly = (db) => async ( name = null ) => {
+    try{
+
+        const response = await db.query( namesOnly( name ) )
+
+        console.log( response );
+
+        return {
+            ok       : true,
+            response : response.rows
+        }
+
+    } catch( error ){
+        return{
+            ok      : false,
+            message : error.message,
+        }
+    }
+}
+
 module.exports = {
     selectAll,
     selectByTypes,
     selectByTypesOnly,
+    selectByNameOnly,
 }

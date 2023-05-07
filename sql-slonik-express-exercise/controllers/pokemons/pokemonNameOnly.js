@@ -1,11 +1,11 @@
 const queries = require( '../../models/pokemons' );
  
-// Ejercicio 6
+// Ejercicio 7
 module.exports = ( db ) => async(req, res, next) => {
 
     // const type = req.params.type;
 
-    const dbRes = await queries.selectByTypesOnly(await db)( req.params.type )
+    const dbRes = await queries.selectByNameOnly(await db)( req.params.name )
     
     // console.log('>>>> ', dbRes);
 
