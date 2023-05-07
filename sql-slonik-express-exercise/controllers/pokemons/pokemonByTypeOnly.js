@@ -1,21 +1,15 @@
 const queries = require( '../../models/pokemons' );
  
-// Ejercicio 1 y 5
+// Ejercicio 6
 module.exports = ( db ) => async(req, res, next) => {
 
-    const type1 = req.query.type1;
-    const type2 = req.query.type2;
+    // const type = req.params.type;
 
-    let dbRes;
-
-    if( !type1 && !type2 ) {
-        dbRes = await queries.selectAll(await db)()
-    } else {
-        dbRes = await queries.selectByTypes(await db)( type1, type2 )
-    }
-
+    const dbRes = await queries.selectByTypesOnly(await db)( req.params.type )
     
-    if( !dbRes.ok ) return next({
+    console.log('>>>> ', dbRes);
+
+    if( !dbRes.ok) return next({
         statusCode : 500,
         error      : new Error('¡Woops! ¡Algo no está bien!'),
     });
@@ -24,4 +18,5 @@ module.exports = ( db ) => async(req, res, next) => {
         success : true,
         data    : dbRes.response,
     });
+
 }

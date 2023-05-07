@@ -1,4 +1,8 @@
-const { selectAllPokemons } = require('./queries')
+// Llamo a la funcion que está dentro de QUERIES
+const { selectAllPokemons }     = require('./queries');
+const { pokemonsByType }        = require('./queries');
+const { typesOnly }             = require('./queries')
+
 const { sql } = require('slonik')
 
 // Por ejercicio 1
@@ -23,20 +27,11 @@ zz
 const selectByTypes = (db) => async ( type1 = null, type2 = null ) => {
     
     try{
-        console.log('>>>> ', type1, type2);
+        // console.log('>>>> ', type1, type2);
         
-        const response = await db.query(sql.unsafe`
+        const response = await db.query( pokemonsByType(type1, type2) );
 
-            SELECT pokemons.id, pokemons.name, JSON_AGG(elements.name) AS types
-            FROM pokemons 
-            INNER JOIN pokemons_elements ON pokemons.id = pokemons_elements.pokemon_id 
-            INNER JOIN elements ON elements.id = pokemons_elements.element_id
-            WHERE elements.name = ${type1} OR elements.name = ${type2}
-            GROUP BY pokemons.id
-            
-        `);
-
-        console.log( response );
+        // console.log( response );
 
         return{
             ok       : true,
@@ -44,7 +39,7 @@ const selectByTypes = (db) => async ( type1 = null, type2 = null ) => {
         }
 
     } catch( error ) {
-        console.log('>>>>', error)
+        // console.log('>>>>', error)
         return {
             ok      : false,
             message : error.message,
@@ -53,7 +48,29 @@ const selectByTypes = (db) => async ( type1 = null, type2 = null ) => {
 
 }
 
+// Ejercicio 6
+const selectByTypesOnly = (db) => async ( type = null ) => {
+    try{
+
+        const response = await db.query( typesOnly( type ) )
+
+        console.log( response );
+
+        return {
+            ok       : true,
+            response : response.rows
+        }
+
+    } catch( error ){
+        return{
+            ok      : false,
+            message : error.message,
+        }
+    }
+}
+
 module.exports = {
     selectAll,
     selectByTypes,
+    selectByTypesOnly,
 }
