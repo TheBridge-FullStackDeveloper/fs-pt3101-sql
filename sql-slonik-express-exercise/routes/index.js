@@ -1,4 +1,5 @@
 const router   = require('express').Router()
+
 const pokemons = require('./pokemons')
 const trainers = require('./trainers')
 const cities   = require('./cities')

@@ -1,4 +1,4 @@
 module.exports = {
-    getAll           : require('./get-all'),
-    getPokemonByType : require('./getPokemonType'),
+    getAll    : require('./get-all'),
+    getByType : require('./pokemonByType'),
 }
