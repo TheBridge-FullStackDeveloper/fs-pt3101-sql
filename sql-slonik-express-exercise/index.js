@@ -2,7 +2,11 @@ const express = require('express');
 const db = require('./configs/db');
 const app = express();
 
+
 const routes = require( './routes' );
+
+// Ojo revisar!!!
+app.use(express.json());
 
 app.use( routes(db) );
 

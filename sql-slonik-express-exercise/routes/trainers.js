@@ -6,6 +6,7 @@ const controllers = require('../controllers/trainers')
 module.exports = (db) => {
     router.get( '/', controllers.getAll(db) )
     router.get( '/:name', controllers.getTrainerName(db) )
+    router.post( '/new', controllers.addNewTrainer(db) )
 
     return router;
 }
