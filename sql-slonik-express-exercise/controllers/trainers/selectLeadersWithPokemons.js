@@ -1,13 +1,9 @@
 const queries = require( '../../models/trainers' );
- 
-// Ejercicio 8
-module.exports = ( db ) => async(req, res, next) => {
 
-    // const type = req.params.type;
-
-    const dbRes = await queries.selectTrainerByName(await db)( req.params.name )
+// Ejercicio 10
+module.exports = (db) => async(req, res, next) => {
     
-    // console.log('>>>> ', dbRes);
+    const dbRes = await queries.linkPokemonAndTrainer( await db )(req.params.trainerName, req.body);
 
     if( !dbRes.ok) return next({
         statusCode : 500,

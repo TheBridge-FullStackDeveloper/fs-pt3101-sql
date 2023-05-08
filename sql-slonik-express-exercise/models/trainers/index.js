@@ -5,8 +5,8 @@ const { v4: uuidv4 } = require('uuid');
 // Ejercicio 2
 const { selectAllTrainers } = require('./queries');
 const {  selectOneByName  } = require('./queries');
-const {  insertingLeader  } = require('./queries');
-const {   insertingGyms   } = require('./queries');
+// const {  insertingLeader  } = require('./queries');
+// const {   insertingGyms   } = require('./queries');
 
 
 
@@ -82,10 +82,44 @@ const addingNewTrainer = (db) => async ( infoTrainer ) => {
 
 }
 
+// Ejercicio 10
+const linkPokemonAndTrainer = ( db ) => async ( trainer, pokemonsArray ) => {
+
+    const pokArray = pokemonsArray.pokemons;
+
+    console.log('===>>>> ', pokArray);
+    console.log('===>>>> ', db);
+
+    for ( let i=0 ; i < pokArray.length ; i++ ) {
+        
+        try{
+            await db.query(sql.unsafe`
+                UPDATE pokemons
+                SET leader_id = ( SELECT id FROM leaders WHERE LOWER(name) = ${trainer} )
+                WHERE name ILIKE ${pokArray[i]}               
+            `)
+
+        } catch( error ){     
+            console.log( error.message );
+            return {
+                ok      : false,
+            };
+        }
+    }
+
+    return {
+        ok : true,
+        data: {
+            trainer : trainer,
+            pokemons : pokArray,
+        }
+    }
+} 
 
 
 module.exports = {
     selectTrainers,
     selectTrainerByName,
     addingNewTrainer,
+    linkPokemonAndTrainer,
 }
