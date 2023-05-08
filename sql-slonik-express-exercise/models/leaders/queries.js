@@ -1,6 +1,8 @@
 const { sql } = require('slonik')
 
 
+
+
 // 2.- segundo ejercicio
 const selectAll = () => sql.unsafe`
 
@@ -19,15 +21,22 @@ WHERE name = ${trainer}
 
 // 9.- Noveno ejercicio
 
-const postTrainer = (name, badge, description, city) => sql.unsafe`
-   
+const postTrainer = (LeaderNewId, name, badge, description) => sql.unsafe`
+  
 INSERT INTO leaders
-(name, badge, description, city)
-VALUES (${name}, ${badge}, ${description}, ${city})
+(id, name, badge, description)
+VALUES (${LeaderNewId}, ${name}, ${badge}, ${description})
 `
+
+const postCity = (city, LeaderNewId) => sql.unsafe`
+   
+INSERT INTO gyms
+(city, Leader_id)
+VALUES (${city}, ${LeaderNewId})`
 
 module.exports = {
     selectAll,
     selectTrainer,
-    postTrainer,    
+    postTrainer,  
+    postCity,  
 }

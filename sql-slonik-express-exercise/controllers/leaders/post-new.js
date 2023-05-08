@@ -1,10 +1,12 @@
 const queries = require('../../models/leaders')
 
+
 module.exports = (db) => async (req, res, next) => {
 
-    const {name, badge, description, city} = req.body
-
-    const resultTrainerNew = await queries.postLead(await db)(name, badge, description, city)
+    
+   
+    const resultTrainerNew = await queries.postLead(await db)(req.body)
+    
 
     if(!resultTrainerNew.ok) return next({
         statusCode: 500,
@@ -13,10 +15,8 @@ module.exports = (db) => async (req, res, next) => {
 
     res.status(200).json({
         success: true,
-        data: resultTrainerNew.response,
     })
 }
 
 
 
-name, badge, description, city

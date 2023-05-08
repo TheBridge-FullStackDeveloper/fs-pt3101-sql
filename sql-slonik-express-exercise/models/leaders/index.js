@@ -1,4 +1,5 @@
-const { selectAll, selectTrainer } = require('./queries')
+const { selectAll, selectTrainer, postTrainer, postCity } = require('./queries')
+const { v4: uuidv4 } = require("uuid")
 
 
 
@@ -34,15 +35,19 @@ const chooseLead = (db) => async (trainer) => {
     }
 }
 
-const postLead = (db) => async (name, badge, description, city) => {
+const postLead = (db) => async (info) => {
+    
     try {
-        const resultNew = await db.query(postTrainer(name, badge, description, city))
+        const LeaderNewId = uuidv4();
+        await db.query(postTrainer (LeaderNewId, info.name, info.badge, info.description))
+
+        await db.query(postCity(info.city, LeaderNewId))
 
         return {
             ok: true,
-            response: resultNew.rows,
         }
     } catch(error) {
+        
         return {
             ok: false,
             message: error.message,
