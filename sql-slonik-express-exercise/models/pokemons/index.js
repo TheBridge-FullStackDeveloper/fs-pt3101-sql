@@ -93,6 +93,7 @@ const selectByNameOnly = (db) => async ( name = null ) => {
 }
 
 // EJercicio 11
+// Le agrego un ID de trainer random al pokemon ingresado xD
 const insertNewPokemon = ( db ) => async (infoPokemon) => {
 
     try{
