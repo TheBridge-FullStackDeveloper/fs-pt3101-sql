@@ -8,6 +8,7 @@ module.exports = (db) => {
     router.get( '/', controllers.getByType(db) )
     router.get( '/type/:type', controllers.getByTypeOnly(db) )
     router.get( '/:name', controllers.nameOnly(db) )
+    router.post( '/new', controllers.newPokemon(db) )
 
     return router;
 }

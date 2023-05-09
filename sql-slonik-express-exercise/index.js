@@ -6,7 +6,11 @@ const app = express();
 const routes = require( './routes' );
 
 // Ojo revisar!!!
-app.use(express.json());
+// EL Código de ORO Secreto! No olvidar xD
+// 100% Real NO FAKE
+app.use(express.json()); // <============
+
+
 
 app.use( routes(db) );
 

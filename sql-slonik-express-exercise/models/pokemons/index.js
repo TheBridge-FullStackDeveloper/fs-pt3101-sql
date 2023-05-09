@@ -92,9 +92,36 @@ const selectByNameOnly = (db) => async ( name = null ) => {
     }
 }
 
+// EJercicio 11
+const insertNewPokemon = ( db ) => async (infoPokemon) => {
+
+    try{
+
+
+        await db.query(sql.unsafe`
+            INSERT INTO pokemons ( name, level, id, leader_id )
+            VALUES ( ${infoPokemon.name}, ${infoPokemon.level}, ${infoPokemon.id}, (
+                SELECT id FROM leaders ORDER BY RANDOM() LIMIT 1 
+            ))
+        `)
+
+        return {
+            ok : true,
+        }
+
+    } catch( error ) {
+        return {
+            ok      : false,
+            message : error.message,
+        }
+    }
+
+}
+
 module.exports = {
     selectAll,
     selectByTypes,
     selectByTypesOnly,
     selectByNameOnly,
+    insertNewPokemon,
 }

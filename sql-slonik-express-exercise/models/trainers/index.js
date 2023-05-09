@@ -116,7 +116,6 @@ const linkPokemonAndTrainer = ( db ) => async ( trainer, pokemonsArray ) => {
     }
 } 
 
-
 module.exports = {
     selectTrainers,
     selectTrainerByName,
